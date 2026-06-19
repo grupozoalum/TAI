@@ -653,14 +653,58 @@
             .footer-bottom      { flex-direction: column; gap: 8px; text-align: center; }
             .capacity-footer    { grid-template-columns: 1fr; }
         }
+
+        /* ─── BLUEPRINT LOADER TAI ─── */
+        #blueprint-loader { position: fixed; inset: 0; z-index: 999999; overflow: hidden; background: var(--navy-dark); transition: opacity 1s ease, visibility 1s ease; }
+        #blueprint-loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+        .bp-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.08) contrast(1.35) saturate(0); transform: scale(1.12); animation: bpReveal 5s cubic-bezier(.19,1,.22,1) forwards; }
+        .bp-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(6,21,40,.85), rgba(6,21,40,.5)); }
+        .bp-grid { position: absolute; inset: 0; opacity: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 60px 60px; animation: bpGrid 2s ease forwards; }
+        .bp-line { position: absolute; background: rgba(69,155,113,.5); opacity: 0; }
+        .bp-line.h { height: 1px; width: 0; animation: drawH 2s ease forwards; }
+        .bp-line.v { width: 1px; height: 0; animation: drawV 2s ease forwards; }
+        .bp-tech { position: absolute; font-family: 'Open Sans', monospace; font-size: 11px; letter-spacing: 0.3em; color: rgba(255,255,255,.45); opacity: 0; animation: bpText 2.5s ease forwards; }
+        .bp-tech.t1 { top: 12%; left: 8%; animation-delay: 1s; }
+        .bp-tech.t2 { bottom: 14%; right: 8%; animation-delay: 1.6s; }
+        .bp-tech.t3 { top: 50%; left: 5%; animation-delay: 2s; }
+        .bp-scan { position: absolute; left: 0; width: 100%; height: 180px; background: linear-gradient(to bottom, transparent, rgba(69,155,113,.2), transparent); animation: bpScan 3.5s ease-in-out infinite; }
+        .bp-logo { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; z-index: 5; opacity: 0; animation: bpLogo 2s ease forwards; animation-delay: 3.5s; width: 100%; }
+        .bp-logo h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(48px, 9vw, 120px); font-weight: 800; letter-spacing: 0.05em; color: #fff; line-height: 0.9; }
+        .bp-logo h1 span { color: var(--green); }
+        .bp-logo p { font-family: 'Open Sans', sans-serif; color: rgba(255,255,255,.7); font-size: 12px; font-weight: 600; letter-spacing: 0.3em; margin-top: 16px; text-transform: uppercase; }
+        @keyframes bpReveal { 0% { filter: brightness(0.03) contrast(1.5) saturate(0); transform: scale(1.18); } 100% { filter: brightness(0.4) contrast(1.15) saturate(0.5); transform: scale(1); } }
+        @keyframes bpGrid { to { opacity: 1; } }
+        @keyframes drawH { to { width: 100%; opacity: 1; } }
+        @keyframes drawV { to { height: 100%; opacity: 1; } }
+        @keyframes bpText { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bpScan { 0% { top: -20%; opacity: 0; } 20% { opacity: 1; } 100% { top: 120%; opacity: 0; } }
+        @keyframes bpLogo { from { opacity: 0; transform: translate(-50%,-40%); filter: blur(10px); } to { opacity: 1; transform: translate(-50%,-50%); filter: blur(0); } }
     </style>
+    
 </head>
 <body>
+
+<div id="blueprint-loader">
+    <img class="bp-image" src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop" alt="Cargando TAI">
+    <div class="bp-overlay"></div>
+    <div class="bp-grid"></div>
+    <div class="bp-line h" style="top:20%; left:0; animation-delay:.4s;"></div>
+    <div class="bp-line h" style="top:78%; left:0; animation-delay:.8s;"></div>
+    <div class="bp-line v" style="left:22%; top:0; animation-delay:1.2s;"></div>
+    <div class="bp-line v" style="left:74%; top:0; animation-delay:1.6s;"></div>
+    <div class="bp-tech t1">X:194.334 / Y:883.221</div>
+    <div class="bp-tech t2">ESTRUCTURA METÁLICA</div>
+    <div class="bp-scan"></div>
+    <div class="bp-logo">
+        <h1>T.A.I</span></h1>
+        <p>TREJO, ARQUITECTURA E INGENIERÍA</p>
+    </div>
+</div>
 
 <!-- ──────────── HEADER ──────────── -->
 <header>
     <div class="nav-inner">
-        <a href="#inicio" class="logo-text">TREJO <span>TAI</span></a>
+        <a href="#inicio" class="logo-text">T.A.I</span></a>
         <nav>
             <ul>
                 <li><a href="#nosotros">Nosotros</a></li>
@@ -1041,6 +1085,15 @@
         </div>
     </div>
 </footer>
+
+<script>
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('blueprint-loader');
+        if(loader) { loader.classList.add('hide'); }
+    }, 6500);
+});
+</script>
 
 </body>
 </html>
