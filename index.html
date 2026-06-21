@@ -79,40 +79,52 @@
         .btn-conocenos span { font-size: 0.65rem; transition: transform 0.3s; }
         .btn-conocenos.open span { transform: rotate(180deg); }
 
-        /* Barra Desplegable */
+        /* Barra Desplegable Alineada a la Derecha */
         .dropdown-bar {
             display: none;
             background: var(--navy-dark);
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 3px solid var(--green);
             position: absolute;
-            top: 68px; /* Altura exacta de tu header */
-            left: 0;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            animation: slideDown 0.3s ease forwards;
+            top: 68px; /* Justo debajo del header */
+            right: 5%; /* Alineado a la derecha, en la misma línea del botón */
+            left: auto;
+            width: 220px; /* Caja compacta */
+            border-radius: 0 0 8px 8px; /* Bordes suaves abajo */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: slideDown 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            z-index: 999;
         }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { 
+            from { opacity: 0; transform: translateY(-10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
         
         .dropdown-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 25px 5%;
+            padding: 10px 0;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2.5rem;
+            flex-direction: column;
+            align-items: flex-end;
         }
         .dropdown-inner a {
             color: rgba(255,255,255,0.85);
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.2s, transform 0.2s;
+            letter-spacing: 1.5px;
+            width: 100%;
+            text-align: right; /* Texto pegado a la derecha */
+            padding: 12px 25px;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .dropdown-inner a:hover { color: var(--green); transform: translateY(-2px); }
+        .dropdown-inner a:last-child { border-bottom: none; }
+        .dropdown-inner a:hover { 
+            color: var(--green); 
+            background: rgba(255,255,255,0.03);
+            padding-right: 35px; /* Empuja sutilmente el texto hacia la izquierda al pasar el mouse */
+        }
 
         /* ─── HERO ─── */
         .hero {
