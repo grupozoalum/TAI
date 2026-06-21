@@ -57,38 +57,62 @@
         }
         .logo-text span { color: var(--green); }
 
-        nav ul { list-style: none; display: flex; gap: 2rem; }
-        nav a {
-            color: rgba(255,255,255,.8);
-            text-decoration: none;
+        /* Botón Conócenos */
+        .btn-conocenos {
+            background: var(--green);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: .82rem;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-            transition: color .2s;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(69, 155, 113, 0.4); /* Resplandor verde */
         }
-        nav a:hover { color: var(--green); }
+        .btn-conocenos:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(69, 155, 113, 0.6); }
+        .btn-conocenos span { font-size: 0.65rem; transition: transform 0.3s; }
+        .btn-conocenos.open span { transform: rotate(180deg); }
 
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-        .hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: all .3s; }
-
-        .mobile-nav {
+        /* Barra Desplegable */
+        .dropdown-bar {
             display: none;
-            flex-direction: column;
-            background: var(--navy);
-            padding: 20px 5%;
-            gap: 1rem;
+            background: var(--navy-dark);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            position: absolute;
+            top: 68px; /* Altura exacta de tu header */
+            left: 0;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            animation: slideDown 0.3s ease forwards;
         }
-        .mobile-nav a {
-            color: rgba(255,255,255,.85);
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .dropdown-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+        .dropdown-inner a {
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: .9rem;
-            letter-spacing: .5px;
+            font-weight: 700;
+            font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s, transform 0.2s;
         }
+        .dropdown-inner a:hover { color: var(--green); transform: translateY(-2px); }
 
         /* ─── HERO ─── */
         .hero {
@@ -646,90 +670,107 @@
         @media (max-width: 640px) {
             .hero h1            { font-size: 2.1rem; }
             .section-title      { font-size: 1.75rem; }
-            nav ul              { display: none; }
-            .hamburger          { display: flex; }
             .compliance-grid    { grid-template-columns: 1fr; }
             .footer-top         { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom      { flex-direction: column; gap: 8px; text-align: center; }
             .capacity-footer    { grid-template-columns: 1fr; }
         }
 
-        /* ─── BLUEPRINT LOADER TAI ─── */
-        #blueprint-loader { position: fixed; inset: 0; z-index: 999999; overflow: hidden; background: var(--navy-dark); transition: opacity 1s ease, visibility 1s ease; }
-        #blueprint-loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-        .bp-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.08) contrast(1.35) saturate(0); transform: scale(1.12); animation: bpReveal 5s cubic-bezier(.19,1,.22,1) forwards; }
-        .bp-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(6,21,40,.85), rgba(6,21,40,.5)); }
-        .bp-grid { position: absolute; inset: 0; opacity: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 60px 60px; animation: bpGrid 2s ease forwards; }
-        .bp-line { position: absolute; background: rgba(69,155,113,.5); opacity: 0; }
-        .bp-line.h { height: 1px; width: 0; animation: drawH 2s ease forwards; }
-        .bp-line.v { width: 1px; height: 0; animation: drawV 2s ease forwards; }
-        .bp-tech { position: absolute; font-family: 'Open Sans', monospace; font-size: 11px; letter-spacing: 0.3em; color: rgba(255,255,255,.45); opacity: 0; animation: bpText 2.5s ease forwards; }
-        .bp-tech.t1 { top: 12%; left: 8%; animation-delay: 1s; }
-        .bp-tech.t2 { bottom: 14%; right: 8%; animation-delay: 1.6s; }
-        .bp-tech.t3 { top: 50%; left: 5%; animation-delay: 2s; }
-        .bp-scan { position: absolute; left: 0; width: 100%; height: 180px; background: linear-gradient(to bottom, transparent, rgba(69,155,113,.2), transparent); animation: bpScan 3.5s ease-in-out infinite; }
-        .bp-logo { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; z-index: 5; opacity: 0; animation: bpLogo 2s ease forwards; animation-delay: 3.5s; width: 100%; }
-        .bp-logo h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(48px, 9vw, 120px); font-weight: 800; letter-spacing: 0.05em; color: #fff; line-height: 0.9; }
-        .bp-logo h1 span { color: var(--green); }
-        .bp-logo p { font-family: 'Open Sans', sans-serif; color: rgba(255,255,255,.7); font-size: 12px; font-weight: 600; letter-spacing: 0.3em; margin-top: 16px; text-transform: uppercase; }
-        @keyframes bpReveal { 0% { filter: brightness(0.03) contrast(1.5) saturate(0); transform: scale(1.18); } 100% { filter: brightness(0.4) contrast(1.15) saturate(0.5); transform: scale(1); } }
-        @keyframes bpGrid { to { opacity: 1; } }
-        @keyframes drawH { to { width: 100%; opacity: 1; } }
-        @keyframes drawV { to { height: 100%; opacity: 1; } }
-        @keyframes bpText { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes bpScan { 0% { top: -20%; opacity: 0; } 20% { opacity: 1; } 100% { top: 120%; opacity: 0; } }
-        @keyframes bpLogo { from { opacity: 0; transform: translate(-50%,-40%); filter: blur(10px); } to { opacity: 1; transform: translate(-50%,-50%); filter: blur(0); } }
+        /* ─── ESTILOS DEL NUEVO BLOG (TIPO MAWI) ─── */
+        .blog-nav-bar { display: flex; gap: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px; margin-bottom: 30px; overflow-x: auto; white-space: nowrap; }
+        .blog-nav-bar a { text-decoration: none; color: var(--text-mid); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+        .blog-nav-bar a.active, .blog-nav-bar a:hover { color: var(--navy); border-bottom: 2px solid var(--navy); padding-bottom: 14px; }
+        .blog-grid-featured { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 40px; }
+        .blog-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s; display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.04); }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .blog-img { background-color: var(--bg-light); background-size: cover; background-position: center; width: 100%; height: 220px; }
+        .blog-img.large { height: 400px; }
+        .blog-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+        .blog-tag { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--green); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .blog-tag::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+        .blog-title { font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+        .blog-title.large { font-size: 1.8rem; }
+        .blog-excerpt { color: var(--text-mid); font-size: 0.9rem; }
+        .blog-grid-regular { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        @media (max-width: 960px) { .blog-grid-featured { grid-template-columns: 1fr; } .blog-img.large { height: 250px; } }
+
+        /* Animación para el cambio de páginas */
+        .vista-pagina {
+            display: none; /* Por defecto ocultamos todas para que el JS haga su magia */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── BOTÓN FLOTANTE DE WHATSAPP ─── */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 2000; /* Asegura que esté por encima de todo */
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse-wa 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
+            fill: currentColor; /* Toma el color blanco del texto */
+        }
+        /* Animación de latido */
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        /* Tamaño un poco más pequeño para celulares */
+        @media (max-width: 640px) {
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .whatsapp-icon { width: 30px; height: 30px; }
+        }
     </style>
-    
 </head>
 <body>
-
-<div id="blueprint-loader">
-    <img class="bp-image" src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop" alt="Cargando TAI">
-    <div class="bp-overlay"></div>
-    <div class="bp-grid"></div>
-    <div class="bp-line h" style="top:20%; left:0; animation-delay:.4s;"></div>
-    <div class="bp-line h" style="top:78%; left:0; animation-delay:.8s;"></div>
-    <div class="bp-line v" style="left:22%; top:0; animation-delay:1.2s;"></div>
-    <div class="bp-line v" style="left:74%; top:0; animation-delay:1.6s;"></div>
-    <div class="bp-tech t1">X:194.334 / Y:883.221</div>
-    <div class="bp-tech t2">ESTRUCTURA METÁLICA</div>
-    <div class="bp-scan"></div>
-    <div class="bp-logo">
-        <h1>T.A.I</span></h1>
-        <p>TREJO, ARQUITECTURA E INGENIERÍA</p>
-    </div>
-</div>
 
 <!-- ──────────── HEADER ──────────── -->
 <header>
     <div class="nav-inner">
-        <a href="#inicio" class="logo-text">T.A.I</span></a>
-        <nav>
-            <ul>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#experiencia">Experiencia</a></li>
-                <li><a href="#clientes">Clientes</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger" onclick="this.classList.toggle('open'); document.getElementById('mobile-nav').style.display = document.getElementById('mobile-nav').style.display === 'flex' ? 'none' : 'flex';">
-            <span></span><span></span><span></span>
-        </div>
+        <a href="#blog" class="logo-text">TAI</a>
+        
+                <button id="menu-toggle" class="btn-conocenos">CONÓCENOS <span>▼</span></button>
     </div>
-    <div id="mobile-nav" class="mobile-nav">
-        <a href="#nosotros"  onclick="this.parentElement.style.display='none'">Nosotros</a>
-        <a href="#servicios" onclick="this.parentElement.style.display='none'">Servicios</a>
-        <a href="#experiencia" onclick="this.parentElement.style.display='none'">Experiencia</a>
-        <a href="#clientes"  onclick="this.parentElement.style.display='none'">Clientes</a>
-        <a href="#contacto"  onclick="this.parentElement.style.display='none'">Contacto</a>
+
+        <div id="dropdown-menu" class="dropdown-bar">
+        <div class="dropdown-inner">
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#experiencia">Experiencia</a>
+            <a href="#clientes">Clientes</a>
+            <a href="#blog">Blog</a>
+            <a href="#contacto">Contacto</a>
+        </div>
     </div>
 </header>
 
 
 <!-- ──────────── HERO ──────────── -->
-<section id="inicio" class="hero">
+<section id="inicio" class="hero vista-pagina vista-inicio">
     <p class="hero-eyebrow">Construcción · Mantenimiento · Infraestructura</p>
     <h1>Trejo Arquitectura<br><span>e Ingeniería</span></h1>
     <p>Soluciones integrales para el sector educativo, industrial, comercial e institucional desde 2019.</p>
@@ -744,7 +785,7 @@
 
 
 <!-- ──────────── NOSOTROS ──────────── -->
-<section id="nosotros" class="section">
+<section id="nosotros" class="section vista-pagina">
     <div class="section-inner">
         <div class="about-layout">
             <div class="about-text">
@@ -782,7 +823,7 @@
 
 
 <!-- ──────────── SERVICIOS ──────────── -->
-<section id="servicios" class="section section-bg">
+<section id="servicios" class="section section-bg vista-pagina">
     <div class="section-inner">
         <span class="label">Lo que hacemos</span>
         <h2 class="section-title">Nuestros <span>Servicios</span></h2>
@@ -820,7 +861,7 @@
 
 
 <!-- ──────────── EXPERIENCIA ──────────── -->
-<section id="experiencia" class="section">
+<section id="experiencia" class="section vista-pagina">
     <div class="section-inner">
         <span class="label">Trayectoria</span>
         <h2 class="section-title">Experiencia <span>Relevante</span></h2>
@@ -888,7 +929,7 @@
 
 
 <!-- ──────────── CLIENTES ──────────── -->
-<section id="clientes" class="section clients-section">
+<section id="clientes" class="section clients-section vista-pagina">
     <div class="section-inner">
         <span class="label" style="color: var(--green)">Quiénes confían en nosotros</span>
         <h2 class="section-title">Clientes que han <span>confiado en nosotros</span></h2>
@@ -930,9 +971,80 @@
     </div>
 </section>
 
+<section id="blog" class="section vista-pagina">
+    <div class="section-inner">
+        <p class="section-sub" style="margin-bottom: 5px;">Para profesionales con visión de crecimiento</p>
+        <h2 class="section-title" style="font-size: 2.8rem; margin-bottom: 30px;">Trejo Blog</h2>
+
+        <div class="blog-nav-bar">
+            <a href="#" class="active">Todo</a>
+            <a href="#">Arquitectura</a>
+            <a href="#">Construcción</a>
+            <a href="#">Mantenimiento</a>
+            <a href="#">Estructuras</a>
+            <a href="#">Noticias</a>
+        </div>
+
+        <div class="blog-grid-featured">
+            <a href="#" class="blog-card">
+                <div class="blog-img large" style="background-image: url('https://images.unsplash.com/photo-1541888086425-d81bb19240f5?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Construcción</span>
+                    <h3 class="blog-title large">El futuro de la obra civil: Cómo la tecnología está transformando los proyectos</h3>
+                    <p class="blog-excerpt">Descubre por qué integrar software de gestión y metodologías modernas está disparando la rentabilidad y seguridad en las construcciones institucionales.</p>
+                </div>
+            </a>
+            
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+                <a href="#" class="blog-card">
+                    <div class="blog-img" style="height: 160px; background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="blog-content" style="padding: 16px;">
+                        <span class="blog-tag">Arquitectura</span>
+                        <h3 class="blog-title" style="font-size: 1.1rem;">Diseño y normativas para escuelas modernas</h3>
+                    </div>
+                </a>
+                <a href="#" class="blog-card">
+                    <div class="blog-img" style="height: 160px; background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="blog-content" style="padding: 16px;">
+                        <span class="blog-tag">Mantenimiento</span>
+                        <h3 class="blog-title" style="font-size: 1.1rem;">Automatizando las rutinas de prevención industrial</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="blog-grid-regular">
+            <a href="#" class="blog-card">
+                <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Noticias</span>
+                    <h3 class="blog-title">Actualización REPSE 2026: Lo que debes saber</h3>
+                    <p class="blog-excerpt">Cambios fiscales importantes para contratistas de obra especializada y cómo mantenerse en regla.</p>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Arquitectura</span>
+                    <h3 class="blog-title">Acabados estéticos en naves logísticas</h3>
+                    <p class="blog-excerpt">Cómo mejorar la visual de tus espacios sin perder la funcionalidad y capacidad de carga operativa.</p>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Estructuras</span>
+                    <h3 class="blog-title">Acero VS Concreto: ¿Qué elegir?</h3>
+                    <p class="blog-excerpt">Un análisis profundo de costos, tiempos de ejecución y durabilidad para tu próximo proyecto comercial.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
 
 <!-- ──────────── CAPACIDAD OPERATIVA ──────────── -->
-<section class="section section-bg">
+<section id="capacidad" class="section section-bg vista-pagina vista-inicio">
     <div class="section-inner">
         <span class="label">Nuestro equipo</span>
         <h2 class="section-title">Capacidad <span>Operativa</span></h2>
@@ -975,7 +1087,7 @@
 
 
 <!-- ──────────── CUMPLIMIENTO ──────────── -->
-<section class="section">
+<section id="cumplimiento" class="section vista-pagina vista-inicio">
     <div class="section-inner">
         <span class="label">Formalidad y certeza</span>
         <h2 class="section-title">Cumplimiento y <span>Formalidad</span></h2>
@@ -1056,7 +1168,15 @@
 
 
 <!-- ──────────── FOOTER / CONTACTO ──────────── -->
-<footer id="contacto">
+<section id="contacto" class="section vista-pagina">
+    <div class="section-inner" style="text-align: center; padding: 40px 0;">
+        <span class="label">Hablemos</span>
+        <h2 class="section-title">Estamos listos para tu <span>proyecto</span></h2>
+        <p class="section-sub" style="margin: 0 auto;">Ponte en contacto con nosotros usando la información de abajo.</p>
+    </div>
+</section>
+
+<footer>
     <div class="footer-inner">
         <div class="footer-top">
             <div class="footer-brand">
@@ -1086,14 +1206,57 @@
     </div>
 </footer>
 
+<a href="https://wa.me/527713769150?text=Hola,%20vengo%20de%20su%20sitio%20web%20y%20me%20gustaría%20cotizar%20un%20proyecto." class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Contáctanos por WhatsApp">
+    <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-2.1-3.6 2.1-3.2 7.6-14.1 2.8-5.6 1.4-10.4-.9-13.2-2.3-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+</a>
+
 <script>
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const loader = document.getElementById('blueprint-loader');
-        if(loader) { loader.classList.add('hide'); }
-    }, 6500);
+document.addEventListener("DOMContentLoaded", () => {
+    const vistas = document.querySelectorAll('.vista-pagina');
+    const enlaces = document.querySelectorAll('a[href^="#"]');
+    
+    // Capturamos el nuevo botón y la barra desplegable
+    const btnMenu = document.getElementById('menu-toggle');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    // Lógica para abrir/cerrar la barra al picar "CONÓCENOS"
+    btnMenu.addEventListener('click', () => {
+        const estaAbierto = dropdownMenu.style.display === 'block';
+        dropdownMenu.style.display = estaAbierto ? 'none' : 'block';
+        btnMenu.classList.toggle('open', !estaAbierto); // Gira la flechita del botón
+    });
+
+    function cambiarVista(idDestino) {
+        vistas.forEach(vista => {
+            vista.style.display = 'none';
+            if (vista.id === idDestino || vista.classList.contains('vista-' + idDestino)) {
+                vista.style.display = 'block'; 
+            }
+        });
+        window.scrollTo(0, 0);
+    }
+
+    // Iniciamos con el Blog
+    cambiarVista('blog');
+
+    enlaces.forEach(enlace => {
+        enlace.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            if (href.startsWith('#') && href.length > 1) {
+                const idDestino = href.replace('#', '');
+                e.preventDefault(); 
+                cambiarVista(idDestino);
+                
+                // Ocultamos la barra después de que el usuario elija una página
+                dropdownMenu.style.display = 'none';
+                btnMenu.classList.remove('open');
+            }
+        });
+    });
 });
 </script>
-
 </body>
 </html>
