@@ -301,8 +301,7 @@
             position: relative; overflow: hidden; border: 2px solid #fff; transition: all 0.5s var(--ease-bounce);
         }
         .article-cta-box:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 60px rgba(29,191,113,0.25); }
-        .article-cta-box::before { content: '✨'; font-size: 10rem; position: absolute; top: -40px; right: -20px; opacity: 0.1; filter: grayscale(1); transform: rotate(15deg); transition: all 0.6s var(--ease-bounce); pointer-events: none; }
-        .article-cta-box:hover::before { transform: rotate(0deg) scale(1.2); opacity: 0.3; filter: none; }
+        .article-cta-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: linear-gradient(90deg, var(--green), var(--navy)); }
         
         .btn-gigante { 
             display: inline-flex; justify-content: center; background: linear-gradient(270deg, #1dbf73, #00d4ff, #1dbf73); background-size: 200% 200%; animation: textShine 4s infinite linear;
