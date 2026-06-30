@@ -8,16 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colores base */
-            --navy:        #0b2341;
-            --navy-dark:   #040d1a;
-            --navy-mid:    #102d58;
-            --green:       #1dbf73;
-            --green-dark:  #148c53;
-            --green-light: #e0f7eb;
-            --bg-light:    #f4f7f9;
-            --bg-white:    #ffffff;
-            --text-dark:   #1a2332;
+            /* Colores base: Identidad TAI */
+            --navy:        #0033A0;
+            --navy-dark:   #001C59;
+            --navy-mid:    #274488;
+            --green:       #28A745;
+            --green-dark:  #00A859;
+            --green-light: #E8F5E9;
+            --bg-light:    #F4F6F9;
+            --bg-white:    #FFFFFF;
+            --text-dark:   #333333;
             --text-mid:    #5a677d;
             
             /* Sombras Premium */
@@ -50,7 +50,7 @@
             position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.5s var(--ease-out);
         }
-        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 80px; gap: 20px; }
         .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.6rem; color: #fff; text-decoration: none; letter-spacing: 2px; transition: transform 0.4s var(--ease-bounce); }
         .logo-text:hover { transform: scale(1.05); } 
         
@@ -74,22 +74,39 @@
             display: inline-block;
             transform-origin: bottom center;
         }
-        .let-3 { color: var(--green); } /* La "I" sigue siendo verde */
+        .let-3 { 
+            color: var(--green); 
+            margin-right: 40px; /* <--- Este es el espacio que alejará a la palabra INICIO */
+        }
 
         /* Tiempos en los que "cae" cada letra sincronizados con el tractor */
         .let-1 { animation: buildLetter 0.5s var(--ease-bounce) forwards 0.8s; }
         .let-2 { animation: buildLetter 0.5s var(--ease-bounce) forwards 1.4s; }
         .let-3 { animation: buildLetter 0.5s var(--ease-bounce) forwards 2.0s; }
+        /* Estilos para el nuevo logo */
+        /* Estilos para el nuevo logo */
+        .logo-isotipo {
+            height: 40px; 
+            width: auto;
+            margin-right: 10px; /* <--- AUMENTAMOS ESTE VALOR PARA DAR MÁS ESPACIO */
+            border-radius: 4    px; 
+            
+            /* Sincronización con la animación de construcción */
+            opacity: 0;
+            display: inline-block;
+            transform-origin: bottom center;
+            animation: buildLetter 0.5s var(--ease-bounce) forwards 0.4s; 
+        }
 
         /* El recorrido de la máquina */
         @keyframes drive {
             0%   { left: -60px; transform: translateY(0) rotate(-5deg); }
-            20%  { left: -5px; transform: translateY(-2px) rotate(0deg); }   /* Llega a la T */
-            25%  { left: -5px; transform: translateY(4px) rotate(10deg); }   /* Frena y descarga la T */
-            40%  { left: 10px; transform: translateY(-2px) rotate(0deg); }   /* Llega a la A */
-            45%  { left: 10px; transform: translateY(4px) rotate(10deg); }   /* Frena y descarga la A */
-            60%  { left: 30px; transform: translateY(-2px) rotate(0deg); }   /* Llega a la I */
-            65%  { left: 30px; transform: translateY(4px) rotate(10deg); }   /* Frena y descarga la I */
+            20%  { left: 2px; transform: translateY(-2px) rotate(0deg); }   /* Llega a la T */
+            25%  { left: 20px; transform: translateY(4px) rotate(10deg); }   /* Frena y descarga la T */   /* Frena y descarga la T */
+            40%  { left: 40px; transform: translateY(-2px) rotate(0deg); }   /* Llega a la A */
+            45%  { left: 50px; transform: translateY(4px) rotate(10deg); }   /* Frena y descarga la A */
+            60%  { left: 60px; transform: translateY(-2px) rotate(0deg); }   /* Llega a la I */
+            65%  { left: 70px; transform: translateY(4px) rotate(10deg); }   /* Frena y descarga la I */
             85%  { left: 120px; opacity: 1; transform: translateY(0) rotate(0); } /* Arranca y se va */
             100% { left: 150px; opacity: 0; display: none; }
         }
@@ -102,7 +119,7 @@
         }
 
         /* ─── DINÁMICA DEL HEADER ─── */
-        #desktop-nav ul { list-style: none; display: flex; gap: 2.5rem; margin: 0; padding: 0; }
+        #desktop-nav ul { list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0; }
         #desktop-nav a { 
             color: rgba(255,255,255,0.65); text-decoration: none; font-family: 'Montserrat', sans-serif; 
             font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; 
@@ -173,6 +190,44 @@
         .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--navy); padding: 20px 50px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: .95rem; letter-spacing: 1.5px; border-radius: 50px; transition: all 0.5s var(--ease-bounce); position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.25), 0 0 0 0 rgba(255,255,255,0); }
         .hero-cta::after { content: ''; position: absolute; top: 0; left: 0; width: 45px; height: 100%; background: linear-gradient(90deg, transparent, rgba(69,155,113,0.25), transparent); animation: shimmer 3.5s ease-in-out infinite; }
         .hero-cta:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 25px 55px rgba(0,0,0,0.35), 0 0 0 8px rgba(255,255,255,0.1); color: var(--green-dark); }
+        /* ─── GRUPO DE BOTONES HERO ─── */
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Botón Secundario (Descargar Presentación) con efecto Glassmorphism */
+        .hero-cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: .95rem;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.5s var(--ease-bounce);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .hero-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
         .hero-divider { position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; }
         .hero-divider svg { display: block; }
         .hero-divider polygon { fill: var(--bg-light); }
@@ -420,9 +475,36 @@
         .client-cat::before { content: ''; position: absolute; bottom: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(29,191,115,0.1) 0%, transparent 70%); pointer-events: none; }
         .client-cat:hover { transform: translateY(-10px); background: rgba(255,255,255,0.08); border-color: rgba(29,191,115,0.25); box-shadow: 0 20px 45px rgba(0,0,0,0.3); }
         .client-cat-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; }
-        .client-items { display: flex; flex-direction: column; gap: 10px; }
-        .client-item { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 13px 18px; font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.88); border: 1px solid rgba(255,255,255,0.07); transition: all 0.35s var(--ease-bounce); }
-        .client-item:hover { background: rgba(29,191,115,0.15); border-color: rgba(29,191,115,0.3); transform: translateX(6px); color: #fff; }
+        /* ─── GALERÍA DE LOGOS DE CLIENTES ─── */
+        
+        .client-logos { 
+            display: grid; 
+            /* Aumentamos el ancho mínimo de 100px a 120px para que tengan más espacio a los lados */
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+            gap: 15px; 
+            margin-top: 15px;
+        }
+        
+        .client-logo { 
+            width: 100%;
+            height: 95px; /* Aumentamos la altura (antes era 70px) para que se vean más grandes */
+            object-fit: contain; 
+            background-color: #ffffff; 
+            padding: 8px; /* Redujimos un poco el padding interno para que el logo ocupe más caja */
+            border-radius: 8px; 
+            
+            /* Siempre a color y opacidad completa */
+            filter: grayscale(0%) opacity(1); 
+            transition: all 0.4s var(--ease-bounce); 
+            /* Añadimos una sombra sutil por defecto para que no se vean tan planas */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+        }
+        
+        /* Al pasar el mouse, mantenemos el efecto de rebote y sombra verde */
+        .client-cat:hover .client-logo {
+            transform: scale(1.08) translateY(-4px); /* Se hacen un poquito más grandes al pasar el cursor */
+            box-shadow: 0 12px 25px rgba(29, 191, 115, 0.35); /* Sombra verde más viva */
+        }
         .clients-caption { text-align: center; margin-top: 4rem; font-size: 0.9rem; color: rgba(255,255,255,0.4); font-style: italic; letter-spacing: 1px; }
 
         /* ─── CUMPLIMIENTO ─── */
@@ -534,6 +616,9 @@
     <div class="nav-inner">
         <a href="#inicio" class="logo-text logo-construccion">
             <div class="excavadora">🚜</div>
+            <!-- Nuevo Isotipo agregado aquí -->
+            <img src="Captura_de_pantalla_2026-06-29_095306-removebg-preview.png" alt="Logo TAI" class="logo-isotipo">
+            <!-- Letras -->
             <div class="letra let-1">T</div><div class="letra let-2">A</div><div class="letra let-3">I</div>
         </a>
         
@@ -544,7 +629,7 @@
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#clientes">Clientes</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="#blog">Proyectos</a></li>
             </ul>
         </nav>
 
@@ -561,7 +646,7 @@
             <a href="#servicios">Servicios</a>
             <a href="#experiencia">Experiencia</a>
             <a href="#clientes">Clientes</a>
-            <a href="#blog">Blog</a>
+            <a href="#blog">Proyectos</a>
             <a href="#contacto">Contacto</a>
         </div>
     </div>
@@ -578,7 +663,11 @@
     <p class="hero-eyebrow">Construcción · Mantenimiento · Infraestructura</p>
     <h1>Trejo Arquitectura<br><span>e Ingeniería</span></h1>
     <p>Soluciones integrales para el sector educativo, industrial, comercial e institucional desde 2019.</p>
-    <a href="#contacto" class="hero-cta">Cotizar Proyecto →</a>
+    <!-- Grupo de botones Call To Action -->
+    <div class="hero-cta-group">
+        <a href="https://wa.me/527229090211?text=Hola,%20me%20gustaría%20hablar%20con%20un%20experto%20sobre%20un%20proyecto." target="_blank" class="hero-cta">Hablar con un experto ➔</a>
+        <a href="Presentación comercial TAI.pdf" target="_blank" class="hero-cta-secondary" download>📄 Descargar presentación</a>
+    </div>
 
     <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-top:64px;padding-top:44px;border-top:1px solid rgba(255,255,255,0.08);position:relative;flex-wrap:wrap;">
         <div style="text-align:center;padding:0 44px;">
@@ -755,6 +844,7 @@
 
 
 <!-- ──────────── CLIENTES ──────────── -->
+<!-- ──────────── CLIENTES ──────────── -->
 <section id="clientes" class="section clients-section vista-pagina">
     <div class="section-inner">
         <span class="label" style="color: var(--green)">Quiénes confían en nosotros</span>
@@ -762,33 +852,40 @@
         <p class="section-sub">Hemos colaborado con instituciones educativas, empresas industriales, desarrolladores inmobiliarios, organismos públicos y firmas de ingeniería en proyectos de construcción, mantenimiento e infraestructura.</p>
 
         <div class="client-categories">
+            <!-- EDUCACIÓN -->
             <div class="client-cat">
                 <div class="client-cat-title">🎓 Educación</div>
-                <div class="client-items">
-                    <div class="client-item">Colegio Salesiano Civilización</div>
-                    <div class="client-item">Domingo Savio</div>
+                <div class="client-logos">
+                    <img src="https://mextudia.com/wp-content/uploads/2020/01/COLEGIO-SALESIANO-SANTA-JULIA.jpg" alt="Colegio Salesiano" class="client-logo">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.Fdl4ykTmO1bCJiwaQu4ESAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Domingo Savio" class="client-logo">
                 </div>
             </div>
+
+            <!-- INDUSTRIA E INGENIERÍA -->
             <div class="client-cat">
                 <div class="client-cat-title">🏭 Industria e Ingeniería</div>
-                <div class="client-items">
-                    <div class="client-item">INEPS</div>
-                    <div class="client-item">Aerobal</div>
-                    <div class="client-item">Columbus McKinnon Corporation</div>
+                <div class="client-logos">
+                    <img src="https://media.licdn.com/dms/image/v2/C4E0BAQH6vPx1ep88yg/company-logo_200_200/company-logo_200_200/0/1630586358985/ineps_sapi_de_cv_logo?e=2147483647&v=beta&t=-pFM6e6NZ4Tk6LWiXFWyOGDtmPg5YjEOcmr8PjvpELM" alt="INEPS" class="client-logo">
+                    <img src="https://th.bing.com/th/id/R.c70eb06c420a413572f07b3d3ccc2b0b?rik=gZr9SeFraKBd0A&riu=http%3a%2f%2fdevingtechnology.com%2fwp-content%2fuploads%2f2020%2f10%2faerobal.jpg&ehk=5DfmLs9ZGmKWUyVhFmGV2Vvv6dayGEotjW8DCPNOmlw%3d&risl=&pid=ImgRaw&r=0" alt="Aerobal" class="client-logo">
+                    <img src="https://th.bing.com/th/id/OIP.XuclapTyg0L0GnGDbjeGiQHaC0?w=344&h=133&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Columbus McKinnon" class="client-logo">
                 </div>
             </div>
+
+            <!-- COMERCIO Y DESARROLLO -->
             <div class="client-cat">
                 <div class="client-cat-title">🛒 Comercio y Desarrollo</div>
-                <div class="client-items">
-                    <div class="client-item">Chedraui</div>
-                    <div class="client-item">ARA</div>
+                <div class="client-logos">
+                    <img src="https://static1.yapik.com/mx/image/shop/chedraui/logo.jpg" alt="Chedraui" class="client-logo">
+                    <img src="https://opcionar.com/sites/default/files/67546255_2790684937625449_7725573888263847936_n.png" alt="ARA" class="client-logo">
                 </div>
             </div>
+
+            <!-- SECTOR PÚBLICO -->
             <div class="client-cat">
                 <div class="client-cat-title">🏛️ Sector Público</div>
-                <div class="client-items">
-                    <div class="client-item">Gobierno de la Ciudad de México</div>
-                    <div class="client-item">Municipio de Lerma</div>
+                <div class="client-logos">
+                    <img src="https://tics.finanzas.cdmx.gob.mx/accesounicotianguis/public/images/logos/gobierno_cdmx.svg" alt="Gobierno CDMX" class="client-logo">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.M7Hkw1UCyjVB8qjjFRwI2wHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Municipio Lerma" class="client-logo">
                 </div>
             </div>
         </div>
@@ -804,8 +901,7 @@
 
     <div class="section-inner" style="position: relative; z-index: 2;">
         <div class="blog-header-container">
-            <span class="blog-super-subtitle">Para mentes innovadoras</span>
-            <h1 class="blog-super-title">Trejo Blog</h1>
+            <h1 class="blog-super-title">PARA MENTES INNOVADORAS</h1>
         </div>
 
         <div style="display: flex; justify-content: center; width: 100%;">
