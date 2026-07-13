@@ -50,6 +50,33 @@
             position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.5s var(--ease-out);
         }
+        header.scrolled { box-shadow: 0 15px 40px rgba(0,0,0,0.25); border-bottom-color: rgba(29,191,115,0.15); }
+
+        /* ─── BARRA SUPERIOR DE CONTACTO ─── */
+        .top-bar {
+            background: var(--navy-dark); color: rgba(255,255,255,0.75);
+            font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 0.3px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .top-bar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 9px 5%; display: flex;
+            align-items: center; justify-content: space-between; gap: 20px;
+        }
+        .top-bar-left { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .top-bar-item { display: inline-flex; align-items: center; gap: 7px; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.3s var(--ease-out); }
+        .top-bar-item:hover { color: var(--green); }
+        .top-bar-item svg { width: 13px; height: 13px; flex-shrink: 0; }
+        .top-bar-badge {
+            display: inline-flex; align-items: center; gap: 6px; color: var(--green);
+            font-weight: 700; letter-spacing: 0.5px;
+        }
+        .top-bar-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse-wa 2.5s infinite; }
+        .top-bar-social { display: flex; align-items: center; gap: 14px; }
+        .top-bar-social a { color: rgba(255,255,255,0.6); transition: all 0.3s var(--ease-bounce); display: flex; }
+        .top-bar-social a:hover { color: var(--green); transform: translateY(-2px); }
+        .top-bar-social svg { width: 15px; height: 15px; }
+        @media (max-width: 760px) { .top-bar-left .top-bar-item.hide-mobile, .top-bar-badge { display: none; } }
+        @media (max-width: 560px) { .top-bar-social { display: none; } }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 80px; gap: 20px; }
         .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.6rem; color: #fff; text-decoration: none; letter-spacing: 2px; transition: transform 0.4s var(--ease-bounce); }
         .logo-text:hover { transform: scale(1.05); } 
@@ -131,8 +158,6 @@
 
         #desktop-nav { display: block; }
         #menu-toggle { display: none; }
-        body.is-blog #desktop-nav { display: none; }
-        body.is-blog #menu-toggle { display: flex; }
 
         @media (max-width: 960px) { #desktop-nav { display: none !important; } #menu-toggle { display: flex !important; } }
 
@@ -285,6 +310,7 @@
 
         /* Grillas */
         .blog-grid-featured { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .blog-grid-featured.single { grid-template-columns: 1fr; max-width: 780px; margin-left: auto; margin-right: auto; }
         .blog-grid-regular { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         
         /* Tarjetas "Levitantes" */
@@ -607,9 +633,264 @@
         @media (max-width: 1024px) { .about-layout, .compliance-layout { grid-template-columns: 1fr; gap: 40px; } .footer-top { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 768px) { .hero h1 { font-size: 2.8rem; } .section { padding: 70px 5%; } .blog-grid-featured { grid-template-columns: 1fr; } .blog-img.large { height: 280px; } .article-header-img { height: 300px; } .article-content h1 { font-size: 2.2rem; } .capacity-footer { grid-template-columns: 1fr; } }
         @media (max-width: 480px) { .hero h1 { font-size: 2.2rem; } .footer-top { grid-template-columns: 1fr; gap: 40px; } .footer-bottom { flex-direction: column; gap: 15px; text-align: center; } .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; } .whatsapp-icon { width: 32px; height: 32px; } .btn-gigante { width: 100%; padding: 18px 20px; font-size: 1rem; } }
+        /* ═══════════════ MODO EDITOR / LOGIN FIREBASE ═══════════════ */
+        .admin-overlay {
+            position: fixed; inset: 0; background: rgba(0, 15, 40, 0.65);
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 5000; padding: 20px; animation: fadeInOverlay 0.3s var(--ease-out);
+        }
+        .admin-overlay.open { display: flex; }
+        @keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 1; } }
+
+        .admin-modal {
+            background: var(--bg-white); border-radius: var(--radius-lg);
+            width: 100%; box-shadow: var(--shadow-lg);
+            animation: modalPop 0.4s var(--ease-bounce);
+            position: relative; max-height: 90vh; overflow-y: auto;
+        }
+        @keyframes modalPop { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        #login-modal .admin-modal { max-width: 380px; padding: 40px 35px; }
+        #editor-modal .admin-modal { max-width: 640px; padding: 35px 40px; }
+
+        .admin-modal h2 { font-family: 'Montserrat', sans-serif; color: var(--navy-dark); font-size: 1.4rem; margin-bottom: 8px; }
+        .admin-modal .admin-sub { color: var(--text-mid); font-size: 0.9rem; margin-bottom: 25px; }
+
+        .admin-close-btn {
+            position: absolute; top: 18px; right: 18px; width: 34px; height: 34px;
+            border-radius: 50%; border: none; background: var(--bg-light); color: var(--text-mid);
+            font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s var(--ease-out);
+        }
+        .admin-close-btn:hover { background: #ffe3e3; color: #d63031; transform: rotate(90deg); }
+
+        .admin-field { margin-bottom: 18px; }
+        .admin-field label { display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--navy-mid); margin-bottom: 6px; }
+        .admin-field input[type="email"],
+        .admin-field input[type="password"],
+        .admin-field input[type="text"],
+        .admin-field select,
+        .admin-field textarea {
+            width: 100%; padding: 12px 16px; border-radius: 12px; border: 2px solid #e4e8f0;
+            font-family: 'Open Sans', sans-serif; font-size: 0.95rem; color: var(--text-dark);
+            transition: all 0.3s var(--ease-out); background: var(--bg-light);
+        }
+        .admin-field input:focus, .admin-field select:focus, .admin-field textarea:focus { outline: none; border-color: var(--green); background: #fff; box-shadow: 0 0 0 4px rgba(40,167,69,0.12); }
+        .admin-field textarea { resize: vertical; min-height: 130px; line-height: 1.5; }
+        .admin-field input[type="file"] { width: 100%; padding: 10px; border-radius: 12px; border: 2px dashed #cdd6e6; background: var(--bg-light); cursor: pointer; }
+
+        .admin-btn {
+            width: 100%; padding: 14px; border: none; border-radius: 50px; cursor: pointer;
+            font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px;
+            background: var(--navy); color: #fff; transition: all 0.35s var(--ease-bounce); margin-top: 6px;
+        }
+        .admin-btn:hover:not(:disabled) { background: var(--navy-dark); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .admin-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .admin-btn.green { background: var(--green); }
+        .admin-btn.green:hover:not(:disabled) { background: var(--green-dark); }
+
+        .admin-msg { font-size: 0.85rem; padding: 10px 14px; border-radius: 10px; margin-bottom: 16px; display: none; }
+        .admin-msg.error { display: block; background: #ffe3e3; color: #c0392b; }
+        .admin-msg.success { display: block; background: var(--green-light); color: #1e7e34; }
+
+        /* Barra flotante de modo editor */
+        #editor-bar {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: var(--navy-dark); color: #fff; padding: 12px 14px; border-radius: 50px;
+            display: none; align-items: center; gap: 12px; z-index: 3000; box-shadow: var(--shadow-lg);
+            font-family: 'Montserrat', sans-serif; border: 1px solid rgba(255,255,255,0.1);
+        }
+        #editor-bar.open { display: flex; }
+        #editor-bar span.badge { background: var(--green); width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+        #editor-bar button {
+            border: none; border-radius: 50px; padding: 9px 18px; font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px; cursor: pointer; transition: all 0.3s var(--ease-out);
+        }
+        #editor-bar .btn-new { background: var(--green); color: #fff; }
+        #editor-bar .btn-new:hover { background: var(--green-dark); transform: translateY(-2px); }
+        #editor-bar .btn-logout { background: rgba(255,255,255,0.12); color: #fff; }
+        #editor-bar .btn-logout:hover { background: rgba(255,255,255,0.25); }
+
+        /* Botón eliminar sobre tarjetas dinámicas en modo editor */
+        .blog-card { position: relative; }
+        .admin-delete-btn {
+            position: absolute; top: 14px; right: 14px; z-index: 20; width: 32px; height: 32px;
+            border-radius: 50%; border: none; background: rgba(214, 48, 49, 0.9); color: #fff;
+            font-size: 0.9rem; cursor: pointer; display: none; align-items: center; justify-content: center;
+            transition: all 0.3s var(--ease-out);
+        }
+        body.editor-mode .admin-delete-btn.dynamic-post { display: flex; }
+        .admin-delete-btn:hover { background: #c0392b; transform: scale(1.1); }
+
+        .admin-edit-btn { display: none; }
+        body.editor-mode .admin-edit-btn { display: inline-block; }
+
+        /* ─── Constructor de bloques de contenido (editor) ─── */
+        .blocks-section { border-top: 2px dashed #e4e8f0; margin-top: 8px; padding-top: 20px; }
+        .blocks-section > label {
+            display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem;
+            letter-spacing: 0.5px; text-transform: uppercase; color: var(--navy-mid); margin-bottom: 4px;
+        }
+        .blocks-hint { color: var(--text-mid); font-size: 0.8rem; margin-bottom: 14px; }
+        .block-row {
+            background: var(--bg-light); border: 2px solid #e4e8f0; border-radius: 16px;
+            padding: 16px; margin-bottom: 14px; position: relative; animation: modalPop 0.3s var(--ease-bounce);
+        }
+        .block-row-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .block-row-head span { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.5px; color: var(--navy-mid); text-transform: uppercase; }
+        .block-remove-btn {
+            border: none; background: #ffe3e3; color: #c0392b; width: 26px; height: 26px; border-radius: 50%;
+            cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s var(--ease-out);
+        }
+        .block-remove-btn:hover { background: #f5b7b1; transform: scale(1.1); }
+        .block-preview-img { width: 100%; max-height: 140px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
+        .block-row input[type="file"] { margin-bottom: 10px; }
+        .block-row textarea { min-height: 70px; }
+        .btn-add-block {
+            width: 100%; padding: 13px; border-radius: 14px; border: 2px dashed var(--green);
+            background: var(--green-light); color: var(--green-dark); font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 0.8rem; letter-spacing: 0.5px; cursor: pointer; transition: all 0.3s var(--ease-out);
+        }
+        .btn-add-block:hover { background: var(--green); color: #fff; transform: translateY(-2px); }
+
+        /* ─── Meta de fecha en tarjetas y artículos ─── */
+        .blog-meta {
+            display: flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; color: var(--text-mid);
+            text-transform: uppercase; margin-bottom: 10px;
+        }
+        .blog-meta svg { width: 12px; height: 12px; opacity: 0.7; }
+
+        /* ─── Badge "Nuevo" sobre la portada del post destacado ─── */
+        .blog-new-badge {
+            position: absolute; top: 20px; left: 20px; z-index: 3; background: linear-gradient(120deg, var(--green), var(--green-dark));
+            color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.68rem; letter-spacing: 1px;
+            padding: 7px 16px; border-radius: 50px; box-shadow: 0 8px 20px rgba(40,167,69,0.4);
+            display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase;
+        }
+        .blog-new-badge::before { content: '✦'; }
+
+        /* ─── Cuerpo editorial de los artículos dinámicos ─── */
+        .article-intro { font-size: 1.15rem; color: var(--text-mid); line-height: 1.9; margin-top: 22px; }
+        .article-blocks { margin-top: 45px; display: flex; flex-direction: column; gap: 45px; }
+        .article-block-img {
+            width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+            display: block; object-fit: cover; max-height: 620px;
+        }
+        .article-block-text {
+            font-size: 1.08rem; line-height: 1.9; color: var(--text-dark); margin-top: 20px;
+            padding-left: 22px; border-left: 4px solid var(--green); white-space: pre-line;
+        }
     </style>
 </head>
 <body>
+
+<!-- ═══════════════ MODAL DE LOGIN (Ctrl+Shift+A en #blog) ═══════════════ -->
+<div id="login-modal" class="admin-overlay">
+    <div class="admin-modal">
+        <button type="button" class="admin-close-btn" data-close="login-modal">✕</button>
+        <h2>Acceso Editor</h2>
+        <p class="admin-sub">Inicia sesión para publicar noticias y proyectos.</p>
+        <div id="login-msg" class="admin-msg"></div>
+        <form id="login-form">
+            <div class="admin-field">
+                <label for="login-email">Correo</label>
+                <input type="email" id="login-email" autocomplete="username" required>
+            </div>
+            <div class="admin-field">
+                <label for="login-password">Contraseña</label>
+                <input type="password" id="login-password" autocomplete="current-password" required>
+            </div>
+            <button type="submit" class="admin-btn" id="login-submit-btn">Entrar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ═══════════════ MODAL EDITOR DE PUBLICACIONES ═══════════════ -->
+<div id="editor-modal" class="admin-overlay">
+    <div class="admin-modal">
+        <button type="button" class="admin-close-btn" data-close="editor-modal">✕</button>
+        <h2 id="editor-modal-title">Nueva publicación</h2>
+        <p class="admin-sub">Se guardará en Firestore y la imagen en Storage.</p>
+        <div id="editor-msg" class="admin-msg"></div>
+        <form id="editor-form">
+            <input type="hidden" id="post-id" value="">
+            <div class="admin-field">
+                <label for="post-title">Título</label>
+                <input type="text" id="post-title" required>
+            </div>
+            <div class="admin-field">
+                <label for="post-category">Categoría</label>
+                <select id="post-category">
+                    <option>Arquitectura</option>
+                    <option>Construcción</option>
+                    <option>Mantenimiento</option>
+                    <option>Estructuras</option>
+                    <option>Noticias</option>
+                </select>
+            </div>
+            <div class="admin-field">
+                <label for="post-excerpt">Resumen corto (tarjeta del blog)</label>
+                <input type="text" id="post-excerpt" required>
+            </div>
+            <div class="admin-field">
+                <label for="post-content">Introducción / texto principal</label>
+                <textarea id="post-content" required placeholder="Texto de apertura del artículo. Puedes usar párrafos separados."></textarea>
+            </div>
+            <div class="admin-field">
+                <label for="post-image">Imagen de portada</label>
+                <input type="file" id="post-image" accept="image/*">
+                <div id="post-image-current" style="font-size:0.78rem;color:var(--text-mid);margin-top:6px;"></div>
+            </div>
+
+            <div class="blocks-section">
+                <label>Cuerpo del artículo</label>
+                <p class="blocks-hint">Agrega más imágenes al cuerpo de la publicación; cada una puede llevar texto debajo (opcional). Se mostrarán en el orden en que las agregues.</p>
+                <div id="post-blocks-list"></div>
+                <button type="button" class="btn-add-block" id="btn-add-block">+ Agregar imagen al cuerpo</button>
+            </div>
+
+            <button type="submit" class="admin-btn green" id="editor-submit-btn" style="margin-top:24px;">Publicar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ═══════════════ BARRA FLOTANTE MODO EDITOR ═══════════════ -->
+<div id="editor-bar">
+    <span class="badge"></span>
+    <span id="editor-bar-user" style="font-size:0.8rem;"></span>
+    <button type="button" class="btn-new" id="btn-new-post">+ Nueva publicación</button>
+    <button type="button" class="btn-logout" id="btn-logout">Cerrar sesión</button>
+</div>
+
+<!-- ──────────── BARRA SUPERIOR DE CONTACTO ──────────── -->
+<div class="top-bar">
+    <div class="top-bar-inner">
+        <div class="top-bar-left">
+            <a href="tel:+527229090211" class="top-bar-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.57 1 1 0 01-.25 1.01l-2.2 2.21z"/></svg>
+                722 909 0211
+            </a>
+            <a href="mailto:contacto@trejomx.com" class="top-bar-item hide-mobile">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 2.24l-7.4 5.55a1 1 0 01-1.2 0L4 8.24V18h16V8.24z"/></svg>
+                contacto@trejomx.com
+            </a>
+            <span class="top-bar-badge hide-mobile">Respuesta en menos de 24h</span>
+        </div>
+        <div class="top-bar-social">
+            <a href="https://wa.me/527229090211" target="_blank" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.93L2 22l5.29-1.39a9.9 9.9 0 004.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.24.68-1.4 1.3-1.93 1.34-.5.05-.99.24-3.32-.7-2.82-1.14-4.62-4.02-4.76-4.21-.14-.19-1.14-1.52-1.14-2.9 0-1.37.72-2.04.97-2.32.25-.28.55-.35.73-.35.19 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.34 1.44.29.15.46.13.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 2 .95.29.14.48.21.55.33.07.13.07.72-.16 1.42z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.87v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.88h-2.33v6.99A10 10 0 0022 12z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 015.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.71.35-1.02.66-.31.31-.5.6-.66 1.02-.12.31-.26.78-.3 1.65-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.87.18 1.34.3 1.65.16.42.35.71.66 1.02.31.31.6.5 1.02.66.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.71-.35 1.02-.66.31-.31.5-.6.66-1.02.12-.31.26-.78.3-1.65.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.87-.18-1.34-.3-1.65a2.75 2.75 0 00-.66-1.02 2.75 2.75 0 00-1.02-.66c-.31-.12-.78-.26-1.65-.3-1.05-.05-1.37-.06-4.04-.06zm0 4.05a4.15 4.15 0 110 8.3 4.15 4.15 0 010-8.3zm0 1.8a2.35 2.35 0 100 4.7 2.35 2.35 0 000-4.7zm5.28-1.99a.97.97 0 11-1.94 0 .97.97 0 011.94 0z"/></svg>
+            </a>
+        </div>
+    </div>
+</div>
 
 <!-- ──────────── HEADER ──────────── -->
 <header>
@@ -915,7 +1196,10 @@
             </div>
         </div>
 
-        <div class="blog-grid-featured">
+        <!-- Se llena por JS con el post más reciente + los 2 siguientes cuando hay publicaciones reales -->
+        <div class="blog-grid-featured" id="dynamic-featured-slot" style="display:none;"></div>
+
+        <div class="blog-grid-featured" id="blog-grid-featured">
             <a href="#articulo-tecnologia" class="blog-card">
                 <div class="blog-img-wrapper">
                     <div class="blog-tag">Construcción</div>
@@ -953,6 +1237,7 @@
         </div>
 
         <div class="blog-grid-regular">
+            <div id="static-demo-cards" style="display:contents;">
             <a href="#articulo-repse" class="blog-card">
                 <div class="blog-img-wrapper">
                     <div class="blog-tag">Noticias</div>
@@ -986,6 +1271,7 @@
                     <div class="read-more-btn">Leer artículo <span>➔</span></div>
                 </div>
             </a>
+            </div>
         </div>
     </div>
 </section>
@@ -1286,12 +1572,14 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const vistas = document.querySelectorAll('.vista-pagina');
-    const enlaces = document.querySelectorAll('a[href^="#"]');
-    
     // Capturamos el nuevo botón y la barra desplegable
     const btnMenu = document.getElementById('menu-toggle');
     const dropdownMenu = document.getElementById('dropdown-menu');
+    const headerEl = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+        headerEl.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
 
     // Lógica para abrir/cerrar la barra al picar "CONÓCENOS"
     btnMenu.addEventListener('click', () => {
@@ -1301,6 +1589,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function cambiarVista(idDestino) {
+        // Se re-consulta cada vez para incluir artículos publicados dinámicamente desde el editor
+        const vistas = document.querySelectorAll('.vista-pagina');
         vistas.forEach(vista => {
             vista.style.display = 'none';
             if (vista.id === idDestino || vista.classList.contains('vista-' + idDestino)) {
@@ -1355,9 +1645,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('scroll', checkReveal, { passive: true });
 // ─── SISTEMA DE FILTRADO DEL BLOG ───
     const filterLinks = document.querySelectorAll('.blog-nav-dock a');
-    const blogCards = document.querySelectorAll('.blog-card');
 
-    if (filterLinks.length > 0 && blogCards.length > 0) {
+    if (filterLinks.length > 0) {
         filterLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1370,7 +1659,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const normalizeText = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
                 const filterText = normalizeText(this.textContent);
 
-                // 3. Filtrar las tarjetas
+                // 3. Filtrar las tarjetas (se re-consultan para incluir publicaciones dinámicas)
+                const blogCards = document.querySelectorAll('.blog-card');
                 blogCards.forEach(card => {
                     const tag = card.querySelector('.blog-tag');
                     if (tag) {
@@ -1398,22 +1688,525 @@ document.addEventListener("DOMContentLoaded", () => {
     cambiarVista('blog');
     setTimeout(checkReveal, 80);
 
-    enlaces.forEach(enlace => {
-        enlace.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            if (href.startsWith('#') && href.length > 1) {
-                const idDestino = href.replace('#', '');
-                e.preventDefault(); 
-                cambiarVista(idDestino);
-                
-                // Ocultamos la barra después de que el usuario elija una página
-                dropdownMenu.style.display = 'none';
-                btnMenu.classList.remove('open');
+    // Delegación de eventos: funciona también con enlaces de artículos creados
+    // dinámicamente por el editor (Firebase), que no existían al cargar la página.
+    document.body.addEventListener('click', function(e) {
+        const enlace = e.target.closest('a[href^="#"]');
+        if (!enlace) return;
+        const href = enlace.getAttribute('href');
+
+        if (href.startsWith('#') && href.length > 1) {
+            const idDestino = href.replace('#', '');
+            e.preventDefault();
+            cambiarVista(idDestino);
+
+            // Ocultamos la barra después de que el usuario elija una página
+            dropdownMenu.style.display = 'none';
+            btnMenu.classList.remove('open');
+        }
+    });
+
+    // Exponemos utilidades para el módulo de edición/Firebase (más abajo en la página)
+    window.cambiarVista = cambiarVista;
+    window.checkReveal = checkReveal;
+});
+</script>
+
+<!-- ═══════════════ MÓDULO FIREBASE: LOGIN + EDITOR DE PUBLICACIONES ═══════════════ -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import {
+        getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    import {
+        getFirestore, collection, addDoc, doc, updateDoc, deleteDoc,
+        getDocs, query, orderBy, serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+    import {
+        getStorage, ref, uploadBytes, getDownloadURL, deleteObject
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js";
+
+    // ─── Configuración de tu proyecto Firebase ───
+    const firebaseConfig = {
+        apiKey: "AIzaSyCcQQqxOTlwFC556DDMMVkj1-0YBpwDp6I",
+        authDomain: "pagina-web-3f12f.firebaseapp.com",
+        projectId: "pagina-web-3f12f",
+        storageBucket: "pagina-web-3f12f.firebasestorage.app",
+        messagingSenderId: "733139134833",
+        appId: "1:733139134833:web:bc42cc6df2998b2f782ed0",
+        measurementId: "G-C29E1CVKF2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    // ─── Referencias del DOM ───
+    const loginModal = document.getElementById('login-modal');
+    const editorModal = document.getElementById('editor-modal');
+    const loginForm = document.getElementById('login-form');
+    const loginMsg = document.getElementById('login-msg');
+    const loginSubmitBtn = document.getElementById('login-submit-btn');
+    const editorForm = document.getElementById('editor-form');
+    const editorMsg = document.getElementById('editor-msg');
+    const editorSubmitBtn = document.getElementById('editor-submit-btn');
+    const editorModalTitle = document.getElementById('editor-modal-title');
+    const editorBar = document.getElementById('editor-bar');
+    const editorBarUser = document.getElementById('editor-bar-user');
+    const btnNewPost = document.getElementById('btn-new-post');
+    const btnLogout = document.getElementById('btn-logout');
+    const postIdInput = document.getElementById('post-id');
+    const postTitleInput = document.getElementById('post-title');
+    const postCategoryInput = document.getElementById('post-category');
+    const postExcerptInput = document.getElementById('post-excerpt');
+    const postContentInput = document.getElementById('post-content');
+    const postImageInput = document.getElementById('post-image');
+    const postImageCurrent = document.getElementById('post-image-current');
+    const blocksListEl = document.getElementById('post-blocks-list');
+    const btnAddBlock = document.getElementById('btn-add-block');
+    const blogGridRegular = document.querySelector('.blog-grid-regular');
+    const dynamicFeaturedSlot = document.getElementById('dynamic-featured-slot');
+    const staticFeatured = document.getElementById('blog-grid-featured');
+    const staticDemoCards = document.getElementById('static-demo-cards');
+
+    function openModal(modal) { modal.classList.add('open'); }
+    function closeModal(modal) { modal.classList.remove('open'); }
+
+    document.querySelectorAll('[data-close]').forEach(btn => {
+        btn.addEventListener('click', () => closeModal(document.getElementById(btn.dataset.close)));
+    });
+    [loginModal, editorModal].forEach(modal => {
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
+    });
+
+    function estaEnBlog() {
+        // Cubre tanto la vista #blog como cualquier artículo abierto
+        return document.body.classList.contains('is-blog');
+    }
+
+    // ═══════════════ ESTADO DEL CONSTRUCTOR DE BLOQUES ═══════════════
+    let blocksState = [];       // [{ uid, file, existingUrl, text }]
+    let currentCoverUrl = null; // portada actual al editar
+    let removedBlockUrls = [];  // urls de bloques quitados durante la edición, a limpiar de Storage al guardar
+
+    function genUid() { return 'b' + Date.now() + Math.random().toString(16).slice(2); }
+
+    function syncBlocksFromDOM() {
+        blocksListEl.querySelectorAll('.block-row').forEach(row => {
+            const uid = row.dataset.uid;
+            const b = blocksState.find(x => x.uid === uid);
+            if (!b) return;
+            const textarea = row.querySelector('textarea');
+            const fileInput = row.querySelector('input[type="file"]');
+            if (textarea) b.text = textarea.value;
+            if (fileInput && fileInput.files[0]) b.file = fileInput.files[0];
+        });
+    }
+
+    function renderBlocks() {
+        blocksListEl.innerHTML = '';
+        blocksState.forEach((b, i) => {
+            const row = document.createElement('div');
+            row.className = 'block-row';
+            row.dataset.uid = b.uid;
+            row.innerHTML = `
+                <div class="block-row-head">
+                    <span>Imagen ${i + 1} del cuerpo</span>
+                    <button type="button" class="block-remove-btn" title="Quitar">✕</button>
+                </div>
+                ${b.existingUrl ? `<img src="${b.existingUrl}" class="block-preview-img" alt="">` : ''}
+                <input type="file" accept="image/*">
+                <textarea placeholder="Texto opcional debajo de esta imagen...">${b.text || ''}</textarea>
+            `;
+            row.querySelector('.block-remove-btn').addEventListener('click', () => {
+                syncBlocksFromDOM();
+                if (b.existingUrl) removedBlockUrls.push(b.existingUrl);
+                blocksState = blocksState.filter(x => x.uid !== b.uid);
+                renderBlocks();
+            });
+            blocksListEl.appendChild(row);
+        });
+    }
+
+    btnAddBlock.addEventListener('click', () => {
+        syncBlocksFromDOM();
+        blocksState.push({ uid: genUid(), file: null, existingUrl: null, text: '' });
+        renderBlocks();
+    });
+
+    function prepareNewPostForm() {
+        editorForm.reset();
+        postIdInput.value = '';
+        editorModalTitle.textContent = 'Nueva publicación';
+        editorMsg.className = 'admin-msg';
+        postImageCurrent.innerHTML = '';
+        currentCoverUrl = null;
+        blocksState = [];
+        removedBlockUrls = [];
+        renderBlocks();
+    }
+
+    // ─── Atajo Ctrl+Shift+A: abre login (o directo el editor si ya hay sesión) ───
+    document.addEventListener('keydown', (e) => {
+        const tecla = (e.key || '').toLowerCase();
+        if (e.ctrlKey && e.shiftKey && tecla === 'a') {
+            if (!estaEnBlog()) return;
+            e.preventDefault();
+            if (auth.currentUser) {
+                prepareNewPostForm();
+                openModal(editorModal);
+            } else {
+                loginForm.reset();
+                loginMsg.className = 'admin-msg';
+                openModal(loginModal);
+            }
+        }
+    });
+
+    // ─── Login ───
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loginSubmitBtn.disabled = true;
+        loginMsg.className = 'admin-msg';
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            closeModal(loginModal);
+        } catch (err) {
+            loginMsg.textContent = 'No se pudo iniciar sesión. Verifica tu correo y contraseña.';
+            loginMsg.className = 'admin-msg error';
+        } finally {
+            loginSubmitBtn.disabled = false;
+        }
+    });
+
+    btnLogout.addEventListener('click', () => signOut(auth));
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            document.body.classList.add('editor-mode');
+            editorBar.classList.add('open');
+            editorBarUser.textContent = user.email || 'Editor';
+        } else {
+            document.body.classList.remove('editor-mode');
+            editorBar.classList.remove('open');
+        }
+    });
+
+    btnNewPost.addEventListener('click', () => {
+        prepareNewPostForm();
+        openModal(editorModal);
+    });
+
+    function slugify(texto) {
+        return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '')
+            .replace(/\s+/g, '-').replace(/-+/g, '-').slice(0, 60) || 'publicacion';
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+    }
+
+    function formatDate(ts) {
+        try {
+            const d = (ts && typeof ts.toDate === 'function') ? ts.toDate() : new Date();
+            return d.toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' });
+        } catch (_) { return ''; }
+    }
+
+    // ─── Guardar / actualizar publicación (Firestore + Storage) ───
+    editorForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!auth.currentUser) return;
+        syncBlocksFromDOM();
+        editorSubmitBtn.disabled = true;
+        editorSubmitBtn.textContent = 'Guardando...';
+        editorMsg.className = 'admin-msg';
+
+        try {
+            const title = postTitleInput.value.trim();
+            const category = postCategoryInput.value;
+            const excerpt = postExcerptInput.value.trim();
+            const content = postContentInput.value.trim();
+            const coverFile = postImageInput.files[0];
+            const existingId = postIdInput.value;
+
+            // Portada
+            let imageURL = currentCoverUrl || null;
+            if (coverFile) {
+                const path = `posts/covers/${Date.now()}_${coverFile.name}`;
+                const storageRef = ref(storage, path);
+                await uploadBytes(storageRef, coverFile);
+                imageURL = await getDownloadURL(storageRef);
+            }
+            if (!imageURL) {
+                imageURL = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80';
+            }
+
+            // Bloques del cuerpo (imágenes adicionales + texto opcional)
+            const finalBlocks = [];
+            for (const b of blocksState) {
+                if (b.file) {
+                    const path = `posts/blocks/${Date.now()}_${b.file.name}`;
+                    const blockRef = ref(storage, path);
+                    await uploadBytes(blockRef, b.file);
+                    const url = await getDownloadURL(blockRef);
+                    finalBlocks.push({ imageURL: url, text: b.text || '' });
+                } else if (b.existingUrl) {
+                    finalBlocks.push({ imageURL: b.existingUrl, text: b.text || '' });
+                }
+            }
+
+            const data = {
+                title, category, excerpt, content,
+                imageURL,
+                blocks: finalBlocks,
+                slug: slugify(title),
+                updatedAt: serverTimestamp()
+            };
+
+            if (existingId) {
+                await updateDoc(doc(db, 'posts', existingId), data);
+            } else {
+                data.createdAt = serverTimestamp();
+                await addDoc(collection(db, 'posts'), data);
+            }
+
+            // Limpieza best-effort de imágenes de bloques que el usuario quitó
+            for (const url of removedBlockUrls) {
+                if (url && url.includes('firebasestorage')) {
+                    try { await deleteObject(ref(storage, url)); } catch (_) { /* ya no existe */ }
+                }
+            }
+            removedBlockUrls = [];
+
+            editorMsg.textContent = 'Publicación guardada correctamente.';
+            editorMsg.className = 'admin-msg success';
+            await loadPosts();
+            setTimeout(() => closeModal(editorModal), 900);
+        } catch (err) {
+            console.error(err);
+            editorMsg.textContent = 'Ocurrió un error al guardar. Intenta de nuevo.';
+            editorMsg.className = 'admin-msg error';
+        } finally {
+            editorSubmitBtn.disabled = false;
+            editorSubmitBtn.textContent = 'Publicar';
+        }
+    });
+
+    function prepareEditForm(post, id) {
+        editorForm.reset();
+        postIdInput.value = id;
+        postTitleInput.value = post.title || '';
+        postCategoryInput.value = post.category || 'Noticias';
+        postExcerptInput.value = post.excerpt || '';
+        postContentInput.value = post.content || '';
+        editorModalTitle.textContent = 'Editar publicación';
+        editorMsg.className = 'admin-msg';
+
+        currentCoverUrl = post.imageURL || null;
+        postImageCurrent.innerHTML = currentCoverUrl
+            ? `Portada actual:<br><img src="${currentCoverUrl}" style="width:130px;border-radius:8px;margin-top:6px;">`
+            : '';
+
+        removedBlockUrls = [];
+        blocksState = (post.blocks || []).map(b => ({
+            uid: genUid(), file: null, existingUrl: b.imageURL || null, text: b.text || ''
+        }));
+        renderBlocks();
+        openModal(editorModal);
+    }
+
+    // ─── Contenedor para las secciones de artículo generadas dinámicamente ───
+    let dynamicSectionsContainer = document.getElementById('dynamic-articles-container');
+    if (!dynamicSectionsContainer) {
+        dynamicSectionsContainer = document.createElement('div');
+        dynamicSectionsContainer.id = 'dynamic-articles-container';
+        const footer = document.querySelector('footer');
+        footer.insertAdjacentElement('beforebegin', dynamicSectionsContainer);
+    }
+
+    function setStaticDemoVisible(visible) {
+        if (staticFeatured) staticFeatured.style.display = visible ? '' : 'none';
+        if (staticDemoCards) staticDemoCards.style.display = visible ? 'contents' : 'none';
+    }
+
+    function articleIdFor(post, id) {
+        return `articulo-din-${post.slug}-${id.slice(0, 6)}`;
+    }
+
+    function metaDateHtml(post) {
+        return `<div class="blog-meta">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v11H5V9z"/></svg>
+            ${formatDate(post.createdAt)}
+        </div>`;
+    }
+
+    function buildArticleSection(post, id) {
+        const section = document.createElement('section');
+        section.id = articleIdFor(post, id);
+        section.className = 'section vista-pagina';
+        const blocksHtml = (post.blocks || []).map(b => `
+            <figure style="margin:0;">
+                <img src="${b.imageURL}" class="article-block-img" alt="${escapeHtml(post.title)}">
+                ${b.text ? `<p class="article-block-text">${b.text}</p>` : ''}
+            </figure>`).join('');
+        section.innerHTML = `
+            <div class="article-header-img" style="background-image:url('${post.imageURL}');"></div>
+            <div class="article-content" style="max-width:800px;margin:0 auto;padding:40px 5%;">
+                <div class="blog-tag" style="margin-bottom:14px;display:inline-block;">${escapeHtml(post.category || 'Noticias')}</div>
+                <h1>${escapeHtml(post.title)}</h1>
+                <div style="margin-top:14px;">${metaDateHtml(post)}</div>
+                <p class="article-intro">${post.content || ''}</p>
+                <div class="article-blocks">${blocksHtml}</div>
+                <div style="margin-top:40px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+                    <a href="#blog" class="read-more-btn">← Volver al blog</a>
+                    <button type="button" class="admin-btn admin-edit-btn" style="width:auto;padding:10px 22px;margin-top:0;" data-edit-id="${id}">Editar publicación</button>
+                </div>
+            </div>`;
+        dynamicSectionsContainer.appendChild(section);
+        section.querySelector('[data-edit-id]').addEventListener('click', () => prepareEditForm(post, id));
+    }
+
+    function buildBigFeaturedCard(post, id) {
+        const a = document.createElement('a');
+        a.href = `#${articleIdFor(post, id)}`;
+        a.className = 'blog-card';
+        a.dataset.dynamic = '1';
+        a.innerHTML = `
+            <button type="button" class="admin-delete-btn dynamic-post" data-delete-id="${id}" title="Eliminar publicación">🗑</button>
+            <div class="blog-img-wrapper">
+                <span class="blog-new-badge">Nuevo</span>
+                <div class="blog-tag">${escapeHtml(post.category || 'Noticias')}</div>
+                <div class="blog-img large" style="background-image:url('${post.imageURL}');"></div>
+            </div>
+            <div class="blog-content">
+                ${metaDateHtml(post)}
+                <h3 class="blog-title large">${escapeHtml(post.title)}</h3>
+                <p class="blog-excerpt">${escapeHtml(post.excerpt || '')}</p>
+                <div class="read-more-btn">Leer artículo <span>➔</span></div>
+            </div>`;
+        attachDelete(a, post, id);
+        return a;
+    }
+
+    function buildSmallFeaturedCard(post, id) {
+        const a = document.createElement('a');
+        a.href = `#${articleIdFor(post, id)}`;
+        a.className = 'blog-card';
+        a.dataset.dynamic = '1';
+        a.innerHTML = `
+            <button type="button" class="admin-delete-btn dynamic-post" data-delete-id="${id}" title="Eliminar publicación">🗑</button>
+            <div class="blog-img-wrapper">
+                <div class="blog-tag">${escapeHtml(post.category || 'Noticias')}</div>
+                <div class="blog-img" style="height:200px;background-image:url('${post.imageURL}');"></div>
+            </div>
+            <div class="blog-content" style="padding:25px;">
+                ${metaDateHtml(post)}
+                <h3 class="blog-title" style="font-size:1.2rem;">${escapeHtml(post.title)}</h3>
+                <div class="read-more-btn">Leer artículo <span>➔</span></div>
+            </div>`;
+        attachDelete(a, post, id);
+        return a;
+    }
+
+    function buildRegularCard(post, id) {
+        const a = document.createElement('a');
+        a.href = `#${articleIdFor(post, id)}`;
+        a.className = 'blog-card';
+        a.dataset.dynamic = '1';
+        a.innerHTML = `
+            <button type="button" class="admin-delete-btn dynamic-post" data-delete-id="${id}" title="Eliminar publicación">🗑</button>
+            <div class="blog-img-wrapper">
+                <div class="blog-tag">${escapeHtml(post.category || 'Noticias')}</div>
+                <div class="blog-img" style="background-image:url('${post.imageURL}');"></div>
+            </div>
+            <div class="blog-content">
+                ${metaDateHtml(post)}
+                <h3 class="blog-title">${escapeHtml(post.title)}</h3>
+                <p class="blog-excerpt">${escapeHtml(post.excerpt || '')}</p>
+                <div class="read-more-btn">Leer artículo <span>➔</span></div>
+            </div>`;
+        attachDelete(a, post, id);
+        return a;
+    }
+
+    function attachDelete(cardEl, post, id) {
+        const btn = cardEl.querySelector('[data-delete-id]');
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!auth.currentUser) return;
+            if (!confirm('¿Eliminar esta publicación de forma permanente?')) return;
+            try {
+                await deleteDoc(doc(db, 'posts', id));
+                const urlsToDelete = [post.imageURL, ...((post.blocks || []).map(b => b.imageURL))];
+                for (const url of urlsToDelete) {
+                    if (url && url.includes('firebasestorage')) {
+                        try { await deleteObject(ref(storage, url)); } catch (_) { /* ya no existe */ }
+                    }
+                }
+                await loadPosts();
+            } catch (err) {
+                console.error(err);
+                alert('No se pudo eliminar la publicación.');
             }
         });
-    });
-});
+    }
+
+    // ─── Leer publicaciones de Firestore y renderizar: destacada + grid cronológico ───
+    async function loadPosts() {
+        if (!blogGridRegular) return;
+        let snap;
+        try {
+            const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
+            snap = await getDocs(q);
+        } catch (err) {
+            console.error('No se pudieron cargar las publicaciones de Firestore:', err);
+            return;
+        }
+
+        document.querySelectorAll('.blog-card[data-dynamic="1"]').forEach(el => el.remove());
+        dynamicSectionsContainer.innerHTML = '';
+        dynamicFeaturedSlot.innerHTML = '';
+        dynamicFeaturedSlot.classList.remove('single');
+
+        const posts = [];
+        snap.forEach(docSnap => posts.push({ id: docSnap.id, data: docSnap.data() }));
+
+        setStaticDemoVisible(posts.length === 0);
+        dynamicFeaturedSlot.style.display = posts.length > 0 ? '' : 'none';
+
+        let sideColumn = null;
+        posts.forEach((p, idx) => {
+            const post = p.data, id = p.id;
+            buildArticleSection(post, id);
+
+            if (idx === 0) {
+                dynamicFeaturedSlot.appendChild(buildBigFeaturedCard(post, id));
+            } else if (idx === 1 || idx === 2) {
+                if (!sideColumn) {
+                    sideColumn = document.createElement('div');
+                    sideColumn.style.cssText = 'display:flex;flex-direction:column;gap:35px;';
+                    dynamicFeaturedSlot.appendChild(sideColumn);
+                }
+                sideColumn.appendChild(buildSmallFeaturedCard(post, id));
+            } else {
+                blogGridRegular.appendChild(buildRegularCard(post, id));
+            }
+        });
+
+        if (!sideColumn) dynamicFeaturedSlot.classList.add('single');
+
+        if (window.checkReveal) setTimeout(window.checkReveal, 80);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadPosts);
 </script>
 </body>
 </html>
