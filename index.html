@@ -3,18 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trejo Arquitectura e Ingeniería | trejomx.com</title>
+    <title>Constructora y mantenimiento en Pachuca | Trejo</title>
+    <meta name="description" content="Construcción, rehabilitación, mantenimiento, pavimentos y estructura metálica para empresas e instituciones. Atención desde Pachuca, Hidalgo.">
+    <link rel="canonical" href="https://www.trejomx.com/">
+    <meta property="og:title" content="Constructora y mantenimiento en Pachuca | Trejo">
+    <meta property="og:description" content="Construcción, rehabilitación, mantenimiento, pavimentos y estructura metálica para empresas e instituciones. Atención desde Pachuca, Hidalgo.">
+    <meta property="og:url" content="https://www.trejomx.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.trejomx.com/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_MX">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GeneralContractor",
+      "name": "Trejo Arquitectura e Ingeniería",
+      "url": "https://www.trejomx.com",
+      "telephone": "+52-771-376-9150",
+      "email": "contacto@trejomx.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pachuca",
+        "addressRegion": "Hidalgo",
+        "addressCountry": "MX"
+      },
+      "areaServed": ["CDMX", "Estado de México", "Hidalgo"],
+      "foundingDate": "2019"
+    }
+    </script>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Colores base: Identidad TAI */
-            --navy:        #0033A0;
-            --navy-dark:   #001C59;
-            --navy-mid:    #274488;
-            --green:       #28A745;
-            --green-dark:  #00A859;
-            --green-light: #E8F5E9;
+            --navy:        #16243F;
+            --navy-dark:   #0d1828;
+            --navy-mid:    #1e3358;
+            --green:       #00A58E;
+            --green-dark:  #007d6c;
+            --green-light: #E6F7F5;
             --bg-light:    #F4F6F9;
             --bg-white:    #FFFFFF;
             --text-dark:   #333333;
@@ -34,7 +65,7 @@
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; background-color: var(--bg-light); }
+        html { scroll-behavior: smooth; background-color: var(--bg-light); overflow-x: hidden; }
 
         body {
             font-family: 'Open Sans', sans-serif;
@@ -42,8 +73,23 @@
             line-height: 1.7;
             background-color: var(--bg-light);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            max-width: 100vw;
         }
+/* ─── PROTECCIÓN EDITOR: oculto por defecto, visible solo para admins ─── */
+        #editor-panel,
+        #editor-bar,
+        .admin-btn,
+        .admin-delete-btn,
+        [data-edit-id],
+        [data-delete-id] { display: none !important; }
 
+        body.is-admin #editor-panel,
+        body.is-admin #editor-bar,
+        body.is-admin .admin-btn,
+        body.is-admin .admin-delete-btn,
+        body.is-admin [data-edit-id],
+        body.is-admin [data-delete-id] { display: revert !important; }
         /* ─── HEADER EFECTO CRISTAL ─── */
         header {
             background: rgba(11, 35, 65, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
@@ -146,20 +192,18 @@
         }
 
         /* ─── DINÁMICA DEL HEADER ─── */
-        #desktop-nav ul { list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0; }
+        #desktop-nav ul { list-style: none; display: flex; gap: 0.75rem; margin: 0; padding: 0; }
         #desktop-nav a { 
             color: rgba(255,255,255,0.65); text-decoration: none; font-family: 'Montserrat', sans-serif; 
-            font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; 
-            transition: all 0.3s var(--ease-out); position: relative;
+            font-weight: 700; font-size: 0.76rem; letter-spacing: 0.4px; text-transform: uppercase; 
+            transition: all 0.3s var(--ease-out); position: relative; white-space: nowrap;
         }
         #desktop-nav a::after { content: ''; position: absolute; width: 0; height: 3px; bottom: -8px; left: 50%; transform: translateX(-50%); background-color: var(--green); border-radius: 5px; transition: width 0.3s var(--ease-bounce); }
         #desktop-nav a:hover { color: #fff; transform: translateY(-2px); }
         #desktop-nav a:hover::after { width: 100%; }
 
-        #desktop-nav { display: block; }
-        #menu-toggle { display: none; }
-
-        @media (max-width: 960px) { #desktop-nav { display: none !important; } #menu-toggle { display: flex !important; } }
+        #desktop-nav { display: none; }
+        #menu-toggle { display: flex; }
 
         /* Agrupación Header */
         .header-actions { display: flex; align-items: center; gap: 15px; }
@@ -586,7 +630,8 @@
         .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: rgba(255,255,255,0.3); font-weight: 600; letter-spacing: 0.5px; }
 
         /* ─── ANIMACIÓN SPA (Transición de Páginas) ─── */
-        .vista-pagina { display: none; animation: smoothEnter 0.8s var(--ease-bounce); }
+        .vista-pagina { display: none; }
+        .vista-pagina.visible { animation: smoothEnter 0.8s var(--ease-bounce); }
         @keyframes smoothEnter { 0% { opacity: 0; transform: translateY(40px) scale(0.98); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
 
         /* ─── PREMIUM KEYFRAMES ─── */
@@ -631,8 +676,42 @@
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) { .about-layout, .compliance-layout { grid-template-columns: 1fr; gap: 40px; } .footer-top { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.8rem; } .section { padding: 70px 5%; } .blog-grid-featured { grid-template-columns: 1fr; } .blog-img.large { height: 280px; } .article-header-img { height: 300px; } .article-content h1 { font-size: 2.2rem; } .capacity-footer { grid-template-columns: 1fr; } }
-        @media (max-width: 480px) { .hero h1 { font-size: 2.2rem; } .footer-top { grid-template-columns: 1fr; gap: 40px; } .footer-bottom { flex-direction: column; gap: 15px; text-align: center; } .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; } .whatsapp-icon { width: 32px; height: 32px; } .btn-gigante { width: 100%; padding: 18px 20px; font-size: 1rem; } }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .section { padding: 70px 5%; }
+            .blog-grid-featured { grid-template-columns: 1fr; }
+            .blog-img.large { height: 280px; }
+            .article-header-img { height: 300px; }
+            .article-content h1 { font-size: 2.2rem; }
+            .capacity-footer { grid-template-columns: 1fr; }
+            .nav-inner { gap: 10px; }
+            .btn-cotizar-header { padding: 10px 16px; font-size: 0.7rem; }
+            .btn-conocenos { padding: 10px 16px; font-size: 0.75rem; }
+            .hero-cta-group { flex-direction: column; align-items: stretch; gap: 14px; }
+            .hero-cta, .hero-cta-secondary { width: 100%; justify-content: center; padding: 16px 20px; font-size: 0.88rem; letter-spacing: 0.5px; }
+            .diag-form-card, .diag-aside { padding: 1.6rem; }
+            .legal-card { padding: 30px 24px; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; }
+            .whatsapp-icon { width: 32px; height: 32px; }
+            .btn-gigante { width: 100%; padding: 18px 20px; font-size: 1rem; }
+            .nav-inner { padding: 0 4%; }
+            .logo-text { font-size: 1.25rem; }
+            .logo-isotipo { height: 32px; }
+            .btn-cotizar-header { padding: 9px 12px; font-size: 0.65rem; letter-spacing: 0.5px; }
+            .btn-conocenos { padding: 9px 12px; font-size: 0.7rem; gap: 6px; }
+            .hero { padding: 130px 5% 90px; }
+            .hero-cta, .hero-cta-secondary { padding: 14px 16px; font-size: 0.82rem; }
+            .compliance-grid { grid-template-columns: 1fr; }
+            .client-logos { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); }
+        }
+        @media (max-width: 360px) {
+            .btn-cotizar-header { display: none; }
+        }
         /* ═══════════════ MODO EDITOR / LOGIN FIREBASE ═══════════════ */
         .admin-overlay {
             position: fixed; inset: 0; background: rgba(0, 15, 40, 0.65);
@@ -868,13 +947,19 @@
 <div class="top-bar">
     <div class="top-bar-inner">
         <div class="top-bar-left">
-            <a href="tel:+527229090211" class="top-bar-item">
+            <a href="tel:+527713769150" class="top-bar-item">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.57 1 1 0 01-.25 1.01l-2.2 2.21z"/></svg>
-                722 909 0211
+                771 376 9150 <span style="opacity:0.5;font-size:0.7em;margin-left:2px;">ext. 1021</span>
             </a>
             <a href="mailto:contacto@trejomx.com" class="top-bar-item hide-mobile">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 2.24l-7.4 5.55a1 1 0 01-1.2 0L4 8.24V18h16V8.24z"/></svg>
                 contacto@trejomx.com
+            </a>
+            <a href="https://wa.me/527229090211?text=Hola,%20vengo%20de%20trejomx.com"
+               target="_blank" class="top-bar-item hide-mobile"
+               style="color:#25D366;border:1px solid rgba(37,211,102,0.3);border-radius:50px;padding:3px 10px 3px 7px;">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.93L2 22l5.29-1.39a9.9 9.9 0 004.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.24.68-1.4 1.3-1.93 1.34-.5.05-.99.24-3.32-.7-2.82-1.14-4.62-4.02-4.76-4.21-.14-.19-1.14-1.52-1.14-2.9 0-1.37.72-2.04.97-2.32.25-.28.55-.35.73-.35.19 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.34 1.44.29.15.46.13.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 2 .95.29.14.48.21.55.33.07.13.07.72-.16 1.42z"/></svg>
+                WhatsApp ventas
             </a>
             <span class="top-bar-badge hide-mobile">Respuesta en menos de 24h</span>
         </div>
@@ -882,12 +967,15 @@
             <a href="https://wa.me/527229090211" target="_blank" aria-label="WhatsApp">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.93L2 22l5.29-1.39a9.9 9.9 0 004.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.24.68-1.4 1.3-1.93 1.34-.5.05-.99.24-3.32-.7-2.82-1.14-4.62-4.02-4.76-4.21-.14-.19-1.14-1.52-1.14-2.9 0-1.37.72-2.04.97-2.32.25-.28.55-.35.73-.35.19 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.34 1.44.29.15.46.13.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 2 .95.29.14.48.21.55.33.07.13.07.72-.16 1.42z"/></svg>
             </a>
-            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <a href="https://www.facebook.com/people/Trejo-Arquitectura-e-Ingenieria/100057153202227/"
+               target="_blank" rel="noopener noreferrer" aria-label="Facebook Trejo Arquitectura">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.87v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.88h-2.33v6.99A10 10 0 0022 12z"/></svg>
             </a>
-            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <!-- Instagram: descomentar cuando el perfil esté activo
+            <a href="https://instagram.com/TUUSUARIO" target="_blank" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 015.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.71.35-1.02.66-.31.31-.5.6-.66 1.02-.12.31-.26.78-.3 1.65-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.87.18 1.34.3 1.65.16.42.35.71.66 1.02.31.31.6.5 1.02.66.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.71-.35 1.02-.66.31-.31.5-.6.66-1.02.12-.31.26-.78.3-1.65.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.87-.18-1.34-.3-1.65a2.75 2.75 0 00-.66-1.02 2.75 2.75 0 00-1.02-.66c-.31-.12-.78-.26-1.65-.3-1.05-.05-1.37-.06-4.04-.06zm0 4.05a4.15 4.15 0 110 8.3 4.15 4.15 0 010-8.3zm0 1.8a2.35 2.35 0 100 4.7 2.35 2.35 0 000-4.7zm5.28-1.99a.97.97 0 11-1.94 0 .97.97 0 011.94 0z"/></svg>
             </a>
+            -->
         </div>
     </div>
 </div>
@@ -898,21 +986,25 @@
         <a href="#inicio" class="logo-text logo-construccion">
             <div class="excavadora">🚜</div>
             <!-- Nuevo Isotipo agregado aquí -->
-            <img src="Captura_de_pantalla_2026-06-29_095306-removebg-preview.png" alt="Logo TAI" class="logo-isotipo">
+            <img src="Logo-blanco.png" alt="Logo TAI" class="logo-isotipo">
             <!-- Letras -->
             <div class="letra let-1">T</div><div class="letra let-2">A</div><div class="letra let-3">I</div>
         </a>
         
         <nav id="desktop-nav">
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#experiencia">Experiencia</a></li>
-                <li><a href="#clientes">Clientes</a></li>
-                <li><a href="#blog">Proyectos</a></li>
-            </ul>
-        </nav>
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#sectores">Sectores</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#contacto">Diagnóstico</a></li>
+    </ul>
+</nav>
 
         <div class="header-actions">
             <a href="https://wa.me/527229090211?text=Hola,%20vengo%20de%20su%20sitio%20web%20y%20me%20gustaría%20cotizar%20un%20proyecto." target="_blank" class="btn-cotizar-header">COTIZAR PROYECTO</a>
@@ -925,10 +1017,13 @@
             <a href="#inicio">Inicio</a>
             <a href="#nosotros">Nosotros</a>
             <a href="#servicios">Servicios</a>
+            <a href="#sectores">Sectores</a>
+            <a href="#metodo">Método de trabajo</a>
             <a href="#experiencia">Experiencia</a>
             <a href="#clientes">Clientes</a>
-            <a href="#blog">Proyectos</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#blog">Blog</a>
+            <a href="#cobertura">Cobertura</a>
+            <a href="#contacto">Diagnóstico</a>
         </div>
     </div>
 </header>
@@ -940,15 +1035,16 @@
     <div class="hero-shape hero-shape-1"></div>
     <div class="hero-shape hero-shape-2"></div>
     <div class="hero-shape hero-shape-3"></div>
-    <div class="hero-badge"><span class="hero-badge-dot"></span>Empresa formal · Desde 2019</div>
+    <div class="hero-badge"><span class="hero-badge-dot"></span>Empresa formal · RFC TAI191115RVA · Desde 2019</div>
     <p class="hero-eyebrow">Construcción · Mantenimiento · Infraestructura</p>
-    <h1>Trejo Arquitectura<br><span>e Ingeniería</span></h1>
-    <p>Soluciones integrales para el sector educativo, industrial, comercial e institucional desde 2019.</p>
+    <h1>Construcción y mantenimiento<br><span>con control técnico y respuesta directa</span></h1>
+    <p style="max-width:700px;margin:0 auto 2.5rem;font-size:1.1rem;color:rgba(255,255,255,0.78);line-height:1.8;">Trejo Arquitectura e Ingeniería ejecuta proyectos para empresas, instituciones, escuelas, comercios, condominios y entidades públicas. Atendemos Pachuca y otros municipios de Hidalgo, así como proyectos seleccionados en Ciudad de México y Estado de México.</p>
     <!-- Grupo de botones Call To Action -->
     <div class="hero-cta-group">
-        <a href="https://wa.me/527229090211?text=Hola,%20me%20gustaría%20hablar%20con%20un%20experto%20sobre%20un%20proyecto." target="_blank" class="hero-cta">Hablar con un experto ➔</a>
-        <a href="Presentación comercial TAI.pdf" target="_blank" class="hero-cta-secondary" download>📄 Descargar presentación</a>
+        <a href="#contacto" class="hero-cta" onclick="cambiarVista('contacto');return false;">Solicitar diagnóstico de proyecto ➔</a>
+        <a href="#experiencia" class="hero-cta-secondary" onclick="cambiarVista('experiencia');return false;">Ver proyectos realizados</a>
     </div>
+    <p style="margin-top:1.5rem;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,0.38);text-transform:uppercase;">Trejo, Arquitectura e Ingeniería S.A. de C.V. · RFC TAI191115RVA · Sucursal Pachuca</p>
 
     <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-top:64px;padding-top:44px;border-top:1px solid rgba(255,255,255,0.08);position:relative;flex-wrap:wrap;">
         <div style="text-align:center;padding:0 44px;">
@@ -1055,6 +1151,151 @@
     </div>
 </section>
 
+
+<!-- ──────────── SECTORES ──────────── -->
+<section id="sectores" class="section section-bg vista-pagina">
+    <div class="section-inner">
+        <span class="label">A quién atendemos</span>
+        <h2 class="section-title">Experiencia para distintos <span>tipos de inmueble</span></h2>
+        <p class="section-sub">Ejecutamos obra y mantenimiento en distintos contextos operativos, cada uno con sus requisitos técnicos, normativos y de coordinación.</p>
+
+        <div class="services-grid" style="margin-top:3rem;">
+            <div class="service-card reveal">
+                <span class="service-number">01</span>
+                <div class="service-icon">🏫</div>
+                <h3>Escuelas e instalaciones educativas</h3>
+                <p>Construcción, ampliación y rehabilitación de planteles con cumplimiento de normativas SEP, INIFED y protección civil.</p>
+            </div>
+            <div class="service-card reveal reveal-d1">
+                <span class="service-number">02</span>
+                <div class="service-icon">🏢</div>
+                <h3>Oficinas y comercios</h3>
+                <p>Remodelación, adecuación de locales y oficinas en operación con mínima afectación a la actividad del cliente.</p>
+            </div>
+            <div class="service-card reveal reveal-d2">
+                <span class="service-number">03</span>
+                <div class="service-icon">🏭</div>
+                <h3>Instalaciones industriales y logísticas</h3>
+                <p>Naves, patios de maniobra, estructuras metálicas y mantenimiento para plantas y centros de distribución.</p>
+            </div>
+            <div class="service-card reveal reveal-d3">
+                <span class="service-number">04</span>
+                <div class="service-icon">🏘️</div>
+                <h3>Condominios y vivienda</h3>
+                <p>Impermeabilización, rehabilitación de áreas comunes, instalaciones y mantenimiento correctivo en conjuntos habitacionales.</p>
+            </div>
+            <div class="service-card reveal reveal-d4">
+                <span class="service-number">05</span>
+                <div class="service-icon">🏛️</div>
+                <h3>Edificios públicos e institucionales</h3>
+                <p>Obra pública y privada con capacidad de contratación directa, licitación y cumplimiento documental completo.</p>
+            </div>
+            <div class="service-card reveal reveal-d1">
+                <span class="service-number">06</span>
+                <div class="service-icon">🛣️</div>
+                <h3>Calles, espacios comunitarios y obra exterior</h3>
+                <p>Pavimentos hidráulicos, banquetas, alumbrado público y urbanización de espacios de uso colectivo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ──────────── MÉTODO DE TRABAJO ──────────── -->
+<section id="metodo" class="section vista-pagina">
+    <div class="section-inner">
+        <span class="label">Cómo trabajamos</span>
+        <h2 class="section-title">Un proceso claro desde la visita <span>hasta la entrega</span></h2>
+        <p class="section-sub">Cada proyecto pasa por cinco etapas definidas. Usted sabe en todo momento en qué fase estamos y qué viene después.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:3rem;">
+            <div class="service-card reveal" style="text-align:center;">
+                <div style="width:56px;height:56px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;">1</div>
+                <h3 style="font-size:1rem;margin-bottom:0.6rem;">Diagnóstico</h3>
+                <p style="font-size:0.9rem;">Visita al inmueble para evaluar el estado actual, identificar problemas y definir el alcance real del trabajo.</p>
+            </div>
+            <div class="service-card reveal reveal-d1" style="text-align:center;">
+                <div style="width:56px;height:56px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;">2</div>
+                <h3 style="font-size:1rem;margin-bottom:0.6rem;">Alcance y propuesta</h3>
+                <p style="font-size:0.9rem;">Elaboración de generativa de obra, especificaciones técnicas y presupuesto detallado. Sin letra chica.</p>
+            </div>
+            <div class="service-card reveal reveal-d2" style="text-align:center;">
+                <div style="width:56px;height:56px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;">3</div>
+                <h3 style="font-size:1rem;margin-bottom:0.6rem;">Planeación</h3>
+                <p style="font-size:0.9rem;">Programa de obra, coordinación con el cliente y gestión de permisos cuando aplica.</p>
+            </div>
+            <div class="service-card reveal reveal-d3" style="text-align:center;">
+                <div style="width:56px;height:56px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;">4</div>
+                <h3 style="font-size:1rem;margin-bottom:0.6rem;">Ejecución y control</h3>
+                <p style="font-size:0.9rem;">Supervisión técnica en sitio, reportes de avance y control de calidad en cada partida de trabajo.</p>
+            </div>
+            <div class="service-card reveal reveal-d4" style="text-align:center;">
+                <div style="width:56px;height:56px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;">5</div>
+                <h3 style="font-size:1rem;margin-bottom:0.6rem;">Entrega y garantía</h3>
+                <p style="font-size:0.9rem;">Entrega formal con finiquito de obra, documentación técnica y garantía sobre los trabajos ejecutados.</p>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin-top:3rem;">
+            <a href="#contacto" class="btn-gigante" onclick="cambiarVista('contacto');return false;" style="display:inline-block;">Iniciar diagnóstico de mi proyecto</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ──────────── COBERTURA ──────────── -->
+<section id="cobertura" class="section section-bg vista-pagina">
+    <div class="section-inner">
+        <span class="label">Dónde operamos</span>
+        <h2 class="section-title">Atención desde Pachuca para proyectos <span>en Hidalgo</span></h2>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem;" class="cobertura-layout">
+            <div>
+                <p style="font-size:1.05rem;line-height:1.9;color:var(--text-dark);margin-bottom:1.5rem;">
+                    Nuestra oficina se ubica en Plaza Los Cedros, Blvd. Nuevo Hidalgo 1123, El Venado, C.P. 42185, Pachuca de Soto, Hidalgo. Desde ahí coordinamos la operación de proyectos en Pachuca, Mineral de la Reforma y los demás municipios del estado.
+                </p>
+                <p style="font-size:1.05rem;line-height:1.9;color:var(--text-dark);margin-bottom:1.5rem;">
+                    También atendemos proyectos seleccionados en Ciudad de México y Estado de México, con experiencia acreditada en obra educativa e industrial en ambas entidades.
+                </p>
+                <div style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem;">
+                    <div style="display:flex;align-items:center;gap:1rem;padding:1rem 1.4rem;background:var(--bg-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);">
+                        <div style="width:40px;height:40px;background:rgba(0,165,142,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">📍</div>
+                        <div>
+                            <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;color:var(--navy);letter-spacing:0.5px;">SEDE PRINCIPAL</div>
+                            <div style="font-size:0.9rem;color:var(--text-mid);">Pachuca de Soto, Hidalgo — Mineral de la Reforma</div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:1rem;padding:1rem 1.4rem;background:var(--bg-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);">
+                        <div style="width:40px;height:40px;background:rgba(0,165,142,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">🗺️</div>
+                        <div>
+                            <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;color:var(--navy);letter-spacing:0.5px;">PROYECTOS SELECCIONADOS</div>
+                            <div style="font-size:0.9rem;color:var(--text-mid);">Ciudad de México · Estado de México</div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:1rem;padding:1rem 1.4rem;background:var(--bg-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);">
+                        <div style="width:40px;height:40px;background:rgba(0,165,142,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">📞</div>
+                        <div>
+                            <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;color:var(--navy);letter-spacing:0.5px;">TELÉFONO DE OFICINA</div>
+                            <div style="font-size:0.9rem;color:var(--text-mid);">771 376 9150 ext. 1021</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--bg-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden;aspect-ratio:4/3;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.0!2d-98.7287!3d20.1011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDA2JzA0LjAiTiA5OMKwNDMnNDMuMyJX!5e0!3m2!1ses!2smx!4v1700000000000"
+                    width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación Trejo Arquitectura e Ingeniería — Pachuca, Hidalgo"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+@media (max-width: 768px) {
+    .cobertura-layout { grid-template-columns: 1fr !important; }
+}
+</style>
 
 <!-- ──────────── EXPERIENCIA ──────────── -->
 <section id="experiencia" class="section vista-pagina">
@@ -1182,7 +1423,7 @@
 
     <div class="section-inner" style="position: relative; z-index: 2;">
         <div class="blog-header-container">
-            <h1 class="blog-super-title">PARA MENTES INNOVADORAS</h1>
+            <h2 class="blog-super-title">Blog y recursos</h2>
         </div>
 
         <div style="display: flex; justify-content: center; width: 100%;">
@@ -1509,27 +1750,207 @@
 </section>
 
 
-<!-- ──────────── FOOTER / CONTACTO ──────────── -->
-<section id="contacto" class="section vista-pagina contact-cta-section" style="background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 100%);color:#fff;">
-    <div style="position:absolute;top:-150px;right:-150px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,191,115,0.07) 0%,transparent 70%);pointer-events:none;z-index:0;"></div>
-    <div style="position:absolute;bottom:-100px;left:-100px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(11,35,65,0.6) 0%,transparent 70%);pointer-events:none;z-index:0;"></div>
-    <div class="section-inner" style="text-align:center;">
-        <span class="label" style="color:var(--green);">Hablemos</span>
-        <h2 class="section-title" style="color:#fff;font-size:clamp(2.5rem,5vw,3.5rem);margin-bottom:1.5rem;">Estamos listos para tu <span>proyecto</span></h2>
-        <p style="color:rgba(255,255,255,0.65);font-size:1.15rem;max-width:600px;margin:0 auto 3.5rem;line-height:1.8;">Cuéntanos tu proyecto y te prepararemos una cotización detallada sin costo ni compromiso.</p>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
-            <a href="https://wa.me/527229090211?text=Hola,%20vengo%20de%20su%20sitio%20web%20y%20me%20gustaría%20cotizar%20un%20proyecto." target="_blank" class="btn-cta-wa">
-                <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-2.1-3.6 2.1-3.2 7.6-14.1 2.8-5.6 1.4-10.4-.9-13.2-2.3-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                COTIZAR POR WHATSAPP
-            </a>
-            <a href="mailto:contacto@trejomx.com" class="btn-cta-email">✉️ ENVIAR EMAIL</a>
-        </div>
-        <div class="contact-info-bar">
-            <div class="contact-info-item"><div class="icon">📞</div><h4>771 376 9150</h4><p>Teléfono Directo</p></div>
-            <div style="width:1px;height:60px;background:rgba(255,255,255,0.07);"></div>
-            <div class="contact-info-item"><div class="icon">📍</div><h4>Pachuca, Hidalgo</h4><p>Sede Principal</p></div>
-            <div style="width:1px;height:60px;background:rgba(255,255,255,0.07);"></div>
-            <div class="contact-info-item"><div class="icon">🌐</div><h4>trejomx.com</h4><p>Sitio Web</p></div>
+<!-- ──────────── DIAGNÓSTICO / CONTACTO ──────────── -->
+<section id="contacto" class="section vista-pagina" style="background:var(--bg-light);position:relative;">
+<style>
+/* ─── ESTILOS FORMULARIO DIAGNÓSTICO ─── */
+.diag-layout { display:grid; grid-template-columns:1fr 1.6fr; gap:4rem; align-items:start; margin-top:2.5rem; }
+@media(max-width:900px){ .diag-layout{ grid-template-columns:1fr; gap:2rem; } }
+.diag-aside { background:var(--navy-dark); color:#fff; border-radius:var(--radius-lg); padding:2.5rem; }
+.diag-aside h3 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.1rem; margin-bottom:1.5rem; color:#fff; }
+.diag-contact-item { display:flex; align-items:flex-start; gap:0.85rem; margin-bottom:1.4rem; }
+.diag-contact-item .icon { width:38px; height:38px; background:rgba(0,165,142,0.18); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1rem; }
+.diag-contact-item .text strong { display:block; font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:800; letter-spacing:0.5px; color:var(--green); text-transform:uppercase; margin-bottom:2px; }
+.diag-contact-item .text span { font-size:0.9rem; color:rgba(255,255,255,0.75); }
+.diag-form-card { background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:2.5rem; }
+.diag-form-card .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+@media(max-width:600px){ .diag-form-card .form-row{ grid-template-columns:1fr; } }
+.diag-field { margin-bottom:1.2rem; }
+.diag-field label { display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.5px; text-transform:uppercase; color:var(--navy); margin-bottom:5px; }
+.diag-field input,
+.diag-field select,
+.diag-field textarea {
+    width:100%; padding:11px 14px; border-radius:12px; border:2px solid #e4e8f0;
+    font-family:'Open Sans',sans-serif; font-size:0.95rem; color:var(--text-dark);
+    transition:all 0.3s var(--ease-out); background:var(--bg-light);
+}
+.diag-field input:focus,
+.diag-field select:focus,
+.diag-field textarea:focus { outline:none; border-color:var(--green); background:#fff; box-shadow:0 0 0 4px rgba(0,165,142,0.1); }
+.diag-field textarea { resize:vertical; min-height:110px; line-height:1.6; }
+.diag-field .optional { font-size:0.68rem; color:var(--text-mid); font-weight:400; text-transform:none; letter-spacing:0; margin-left:4px; }
+.diag-checkbox-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:1.5rem; }
+.diag-checkbox-row input[type="checkbox"] { width:18px; height:18px; margin-top:2px; accent-color:var(--green); flex-shrink:0; cursor:pointer; }
+.diag-checkbox-row label { font-size:0.88rem; color:var(--text-mid); cursor:pointer; line-height:1.5; }
+.diag-checkbox-row label a { color:var(--green); text-decoration:none; }
+.diag-checkbox-row label a:hover { text-decoration:underline; }
+.diag-submit-btn {
+    width:100%; padding:15px; border:none; border-radius:50px; cursor:pointer;
+    font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.9rem; letter-spacing:1px;
+    background:linear-gradient(135deg,var(--green),var(--green-dark));
+    color:#fff; transition:all 0.35s var(--ease-bounce); box-shadow:0 8px 24px rgba(0,165,142,0.3);
+}
+.diag-submit-btn:hover:not(:disabled) { transform:translateY(-3px); box-shadow:0 14px 32px rgba(0,165,142,0.45); }
+.diag-submit-btn:disabled { opacity:0.6; cursor:not-allowed; }
+.diag-msg { display:none; padding:14px 18px; border-radius:14px; margin-bottom:1.2rem; font-size:0.9rem; font-weight:600; }
+.diag-msg.success { display:block; background:#e8f8f5; color:#00695c; border:1px solid rgba(0,165,142,0.3); }
+.diag-msg.error { display:block; background:#fff0f0; color:#c62828; border:1px solid rgba(198,40,40,0.25); }
+.diag-promise { font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.5px; color:var(--text-mid); text-align:center; margin-top:1rem; }
+.diag-promise::before { content:'⏱ '; }
+</style>
+
+    <div class="section-inner">
+        <span class="label">Hablemos de su proyecto</span>
+        <h2 class="section-title">Solicitar diagnóstico <span>de proyecto</span></h2>
+        <p class="section-sub">Comparta los datos básicos de su inmueble y necesidad. Nos pondremos en contacto en un día hábil.</p>
+
+        <div class="diag-layout">
+            <!-- Panel lateral informativo -->
+            <div class="diag-aside reveal">
+                <h3>Contacto directo</h3>
+                <div class="diag-contact-item">
+                    <div class="icon">📞</div>
+                    <div class="text">
+                        <strong>Teléfono de oficina</strong>
+                        <span><a href="tel:+527713769150" style="color:rgba(255,255,255,0.75);text-decoration:none;">771 376 9150 ext. 1021</a></span>
+                    </div>
+                </div>
+                <div class="diag-contact-item">
+                    <div class="icon">💬</div>
+                    <div class="text">
+                        <strong>WhatsApp ventas</strong>
+                        <span><a href="https://wa.me/527229090211" target="_blank" style="color:rgba(255,255,255,0.75);text-decoration:none;">722 909 0211</a></span>
+                    </div>
+                </div>
+                <div class="diag-contact-item">
+                    <div class="icon">✉️</div>
+                    <div class="text">
+                        <strong>Correo</strong>
+                        <span><a href="mailto:contacto@trejomx.com" style="color:rgba(255,255,255,0.75);text-decoration:none;">contacto@trejomx.com</a></span>
+                    </div>
+                </div>
+                <div class="diag-contact-item">
+                    <div class="icon">📍</div>
+                    <div class="text">
+                        <strong>Sede</strong>
+                        <span>Plaza Los Cedros, Blvd. Nuevo Hidalgo 1123, El Venado, C.P. 42185, Pachuca de Soto, Hidalgo</span>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);">
+                    <div style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;color:var(--green);text-transform:uppercase;margin-bottom:0.8rem;">Cobertura</div>
+                    <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.7;">Pachuca · Mineral de la Reforma · Municipios de Hidalgo</p>
+                    <p style="font-size:0.88rem;color:rgba(255,255,255,0.45);line-height:1.7;margin-top:0.4rem;">Proyectos seleccionados: CDMX y Estado de México</p>
+                </div>
+
+                <a href="https://wa.me/527229090211?text=Hola,%20vengo%20de%20trejomx.com%20y%20quisiera%20solicitar%20un%20diagnóstico%20de%20proyecto."
+                   target="_blank"
+                   style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:2rem;background:#25d366;color:#fff;text-decoration:none;padding:13px 20px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;letter-spacing:0.5px;transition:all 0.3s var(--ease-bounce);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.93L2 22l5.29-1.39a9.9 9.9 0 004.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.24.68-1.4 1.3-1.93 1.34-.5.05-.99.24-3.32-.7-2.82-1.14-4.62-4.02-4.76-4.21-.14-.19-1.14-1.52-1.14-2.9 0-1.37.72-2.04.97-2.32.25-.28.55-.35.73-.35.19 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.34 1.44.29.15.46.13.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 2 .95.29.14.48.21.55.33.07.13.07.72-.16 1.42z"/></svg>
+                    Contactar por WhatsApp
+                </a>
+            </div>
+
+            <!-- Formulario -->
+            <div class="diag-form-card reveal reveal-d1">
+                <div id="diag-msg" class="diag-msg"></div>
+                <div id="diag-success-view" style="display:none;text-align:center;padding:2rem 0;">
+                    <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+                    <h3 style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--navy);margin-bottom:0.8rem;">Diagnóstico recibido</h3>
+                    <p style="color:var(--text-mid);line-height:1.7;">Nos pondremos en contacto en un día hábil para coordinar la visita o revisar su caso.</p>
+                    <p style="margin-top:1rem;color:var(--text-mid);font-size:0.9rem;">También puede escribirnos directamente a <a href="mailto:contacto@trejomx.com" style="color:var(--green);">contacto@trejomx.com</a>.</p>
+                </div>
+
+                <form id="diag-form" novalidate>
+                    <div class="form-row">
+                        <div class="diag-field">
+                            <label for="diag-nombre">Nombre completo <span style="color:#c62828;">*</span></label>
+                            <input type="text" id="diag-nombre" name="nombre" required placeholder="Lic. Martínez / Arq. López">
+                        </div>
+                        <div class="diag-field">
+                            <label for="diag-empresa">Empresa u organización <span class="optional">(opcional)</span></label>
+                            <input type="text" id="diag-empresa" name="empresa" placeholder="Nombre de la empresa">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="diag-field">
+                            <label for="diag-tel">Teléfono <span style="color:#c62828;">*</span></label>
+                            <input type="tel" id="diag-tel" name="telefono" required placeholder="55 1234 5678">
+                        </div>
+                        <div class="diag-field">
+                            <label for="diag-email">Correo electrónico <span style="color:#c62828;">*</span></label>
+                            <input type="email" id="diag-email" name="correo" required placeholder="correo@empresa.com">
+                        </div>
+                    </div>
+
+                    <div class="diag-field">
+                        <label for="diag-municipio">Municipio y estado <span style="color:#c62828;">*</span></label>
+                        <input type="text" id="diag-municipio" name="municipio" required placeholder="Ej: Pachuca, Hidalgo">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="diag-field">
+                            <label for="diag-inmueble">Tipo de inmueble <span style="color:#c62828;">*</span></label>
+                            <select id="diag-inmueble" name="tipoInmueble" required>
+                                <option value="">Seleccionar…</option>
+                                <option value="escuela">Escuela / instalación educativa</option>
+                                <option value="oficina-comercio">Oficina o comercio</option>
+                                <option value="industrial">Industrial / logístico</option>
+                                <option value="condominio">Condominio / vivienda</option>
+                                <option value="edificio-publico">Edificio público / institucional</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="diag-field">
+                            <label for="diag-servicio">Servicio requerido <span style="color:#c62828;">*</span></label>
+                            <select id="diag-servicio" name="servicio" required>
+                                <option value="">Seleccionar…</option>
+                                <option value="construccion">Construcción</option>
+                                <option value="rehabilitacion">Rehabilitación / remodelación</option>
+                                <option value="mantenimiento">Mantenimiento</option>
+                                <option value="impermeabilizacion">Impermeabilización</option>
+                                <option value="pavimentos">Pavimentos / obra exterior</option>
+                                <option value="estructura-metalica">Estructura metálica</option>
+                                <option value="instalaciones">Instalaciones (hidráulica / sanitaria / eléctrica)</option>
+                                <option value="no-se-aun">No sé aún</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="diag-field">
+                        <label for="diag-descripcion">Descripción breve del problema o necesidad <span style="color:#c62828;">*</span></label>
+                        <textarea id="diag-descripcion" name="descripcion" required placeholder="Describa brevemente qué necesita: p.ej. 'Tenemos filtraciones en la azotea de nuestra escuela y queremos rehabilitar dos aulas'"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="diag-field">
+                            <label for="diag-urgencia">Fecha objetivo o urgencia <span style="color:#c62828;">*</span></label>
+                            <select id="diag-urgencia" name="urgencia" required>
+                                <option value="">Seleccionar…</option>
+                                <option value="urgente">Urgente — menos de 1 semana</option>
+                                <option value="proximo-mes">Próximo mes</option>
+                                <option value="3-meses">En 3 meses</option>
+                                <option value="planeando">Estoy planeando</option>
+                            </select>
+                        </div>
+                        <div class="diag-field">
+                            <label for="diag-presupuesto">Presupuesto aproximado <span class="optional">(opcional)</span></label>
+                            <input type="text" id="diag-presupuesto" name="presupuesto" placeholder="Ej: $200,000 MXN">
+                        </div>
+                    </div>
+
+                    <div class="diag-checkbox-row">
+                        <input type="checkbox" id="diag-privacidad" name="privacidad" required>
+                        <label for="diag-privacidad">Acepto el <a href="/aviso-de-privacidad" target="_blank">aviso de privacidad</a> y el tratamiento de mis datos para recibir respuesta a esta solicitud.</label>
+                    </div>
+
+                    <button type="submit" class="diag-submit-btn" id="diag-submit-btn">
+                        Enviar solicitud de diagnóstico
+                    </button>
+                    <p class="diag-promise">Nos pondremos en contacto en un día hábil.</p>
+                </form>
+            </div>
         </div>
     </div>
 </section>
@@ -1592,10 +2013,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Se re-consulta cada vez para incluir artículos publicados dinámicamente desde el editor
         const vistas = document.querySelectorAll('.vista-pagina');
         vistas.forEach(vista => {
-            vista.style.display = 'none';
-            if (vista.id === idDestino || vista.classList.contains('vista-' + idDestino)) {
-                vista.style.display = 'block'; 
-            }
+            const mostrar = vista.id === idDestino || vista.classList.contains('vista-' + idDestino);
+            vista.style.display = mostrar ? 'block' : 'none';
+            vista.classList.toggle('visible', mostrar);
         });
 
         // Dinámica del Header
@@ -1684,8 +2104,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-    // Iniciamos con el Blog
-    cambiarVista('blog');
+    // Revisamos si la URL trae un artículo específico (ej. desde Google o WhatsApp)
+    const hashActual = window.location.hash;
+    if (hashActual && hashActual.length > 1) {
+        cambiarVista(hashActual.replace('#', ''));
+    } else {
+        cambiarVista('inicio'); // Si entran a trejomx.com normal, abre el inicio
+    }
     setTimeout(checkReveal, 80);
 
     // Delegación de eventos: funciona también con enlaces de artículos creados
@@ -1886,12 +2311,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            document.body.classList.add('editor-mode');
-            editorBar.classList.add('open');
-            editorBarUser.textContent = user.email || 'Editor';
+            document.body.classList.add('is-admin');
+            editorBar.classList.add('visible');
+            editorBarUser.textContent = user.email;
         } else {
-            document.body.classList.remove('editor-mode');
-            editorBar.classList.remove('open');
+            document.body.classList.remove('is-admin');
+            editorBar.classList.remove('visible');
+            editorPanel.classList.remove('visible');
         }
     });
 
@@ -2203,10 +2629,92 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!sideColumn) dynamicFeaturedSlot.classList.add('single');
 
+        // --- MAGIA: Revisamos la URL DESPUÉS de que Firebase cargó los artículos ---
+        const hashActual = window.location.hash;
+        if (hashActual && hashActual.length > 1) {
+            // Abrimos el artículo específico
+            window.cambiarVista(hashActual.replace('#', ''));
+        } else {
+            // Si entran a la raíz de tu dominio, abre el inicio
+            window.cambiarVista('inicio'); 
+        }
+        // ---------------------------------------------------------------------------
+
         if (window.checkReveal) setTimeout(window.checkReveal, 80);
     }
 
     document.addEventListener('DOMContentLoaded', loadPosts);
+
+    // ─── FORMULARIO DIAGNÓSTICO — guarda en Firestore colección "leads" ───
+    (function() {
+        const form    = document.getElementById('diag-form');
+        const msgEl   = document.getElementById('diag-msg');
+        const submitBtn = document.getElementById('diag-submit-btn');
+        const successView = document.getElementById('diag-success-view');
+
+        if (!form) return;
+
+        // Pre-seleccionar servicio si se navega con parámetro en hash
+        // Ejemplo: #contacto?servicio=mantenimiento
+        function preSelectService() {
+            const hash = window.location.hash || '';
+            const match = hash.match(/servicio=([^&]+)/);
+            if (match) {
+                const sel = document.getElementById('diag-servicio');
+                if (sel) sel.value = decodeURIComponent(match[1]);
+            }
+        }
+        window.addEventListener('hashchange', preSelectService);
+        preSelectService();
+
+        function showMsg(text, type) {
+            msgEl.textContent = text;
+            msgEl.className = 'diag-msg ' + type;
+        }
+        function hideMsg() { msgEl.className = 'diag-msg'; }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMsg();
+
+            // Validación manual del checkbox de privacidad
+            const privacidad = document.getElementById('diag-privacidad');
+            if (!privacidad.checked) {
+                showMsg('Debe aceptar el aviso de privacidad para continuar.', 'error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando…';
+
+            const payload = {
+                nombre:       document.getElementById('diag-nombre').value.trim(),
+                empresa:      document.getElementById('diag-empresa').value.trim(),
+                telefono:     document.getElementById('diag-tel').value.trim(),
+                correo:       document.getElementById('diag-email').value.trim(),
+                municipio:    document.getElementById('diag-municipio').value.trim(),
+                tipoInmueble: document.getElementById('diag-inmueble').value,
+                servicio:     document.getElementById('diag-servicio').value,
+                descripcion:  document.getElementById('diag-descripcion').value.trim(),
+                urgencia:     document.getElementById('diag-urgencia').value,
+                presupuesto:  document.getElementById('diag-presupuesto').value.trim(),
+                origen:       'formulario-web',
+                creadoEn:     new Date().toISOString(),
+                leido:        false
+            };
+
+            try {
+                await addDoc(collection(db, 'leads'), payload);
+                form.style.display = 'none';
+                successView.style.display = 'block';
+            } catch (err) {
+                console.error('Error al guardar lead:', err);
+                showMsg('Ocurrió un error al enviar. Por favor contáctenos directamente a contacto@trejomx.com o al 771 376 9150.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar solicitud de diagnóstico';
+            }
+        });
+    })();
 </script>
 </body>
 </html>
