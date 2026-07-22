@@ -1,0 +1,50 @@
+{
+  "firestore": {
+    "database": "(default)",
+    "location": "northamerica-south1",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "disallowLegacyRuntimeConfig": true,
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ],
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      { "source": "/nosotros",                              "destination": "/index.html" },
+      { "source": "/servicios",                             "destination": "/index.html" },
+      { "source": "/servicios/construccion-ampliaciones",   "destination": "/index.html" },
+      { "source": "/servicios/mantenimiento",               "destination": "/index.html" },
+      { "source": "/servicios/estructura-metalica",         "destination": "/index.html" },
+      { "source": "/servicios/edificacion",                 "destination": "/index.html" },
+      { "source": "/experiencia",                           "destination": "/index.html" },
+      { "source": "/proyectos",                             "destination": "/index.html" },
+      { "source": "/contacto",                              "destination": "/index.html" },
+      { "source": "**",                                     "destination": "/index.html" }
+    ]
+  },
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "My App",
+        "supportEmail": "support@undefined.firebaseapp.com"
+      }
+    }
+  }
+}

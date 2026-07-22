@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes que confían en nosotros | Trejo</title>
-    <meta name="description" content="Instituciones educativas, empresas industriales, desarrolladores inmobiliarios y organismos públicos que han trabajado con Trejo.">
-    <link rel="canonical" href="https://www.trejomx.com/clientes">
-    <meta property="og:title" content="Clientes que confían en nosotros | Trejo">
-    <meta property="og:description" content="Instituciones educativas, empresas industriales, desarrolladores inmobiliarios y organismos públicos que han trabajado con Trejo.">
-    <meta property="og:url" content="https://www.trejomx.com/clientes">
+    <title>Solicitar diagnóstico de proyecto | Trejo</title>
+    <meta name="description" content="Contacta a Trejo Arquitectura e Ingeniería para un diagnóstico gratuito de tu proyecto en Pachuca e Hidalgo.">
+    <link rel="canonical" href="https://www.trejomx.com/diagnostico">
+    <meta property="og:title" content="Solicitar diagnóstico de proyecto | Trejo">
+    <meta property="og:description" content="Contacta a Trejo Arquitectura e Ingeniería para un diagnóstico gratuito de tu proyecto en Pachuca e Hidalgo.">
+    <meta property="og:url" content="https://www.trejomx.com/diagnostico">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.trejomx.com/og-cover.jpg">
     <meta property="og:locale" content="es_MX">
@@ -842,6 +842,50 @@
             padding-left: 22px; border-left: 4px solid var(--green); white-space: pre-line;
         }
     
+/* ─── ESTILOS FORMULARIO DIAGNÓSTICO ─── */
+.diag-layout { display:grid; grid-template-columns:1fr 1.6fr; gap:4rem; align-items:start; margin-top:2.5rem; }
+@media(max-width:900px){ .diag-layout{ grid-template-columns:1fr; gap:2rem; } }
+.diag-aside { background:var(--navy-dark); color:#fff; border-radius:var(--radius-lg); padding:2.5rem; }
+.diag-aside h3 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.1rem; margin-bottom:1.5rem; color:#fff; }
+.diag-contact-item { display:flex; align-items:flex-start; gap:0.85rem; margin-bottom:1.4rem; }
+.diag-contact-item .icon { width:38px; height:38px; background:rgba(0,165,142,0.18); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1rem; }
+.diag-contact-item .text strong { display:block; font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:800; letter-spacing:0.5px; color:var(--green); text-transform:uppercase; margin-bottom:2px; }
+.diag-contact-item .text span { font-size:0.9rem; color:rgba(255,255,255,0.75); }
+.diag-form-card { background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:2.5rem; }
+.diag-form-card .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+@media(max-width:600px){ .diag-form-card .form-row{ grid-template-columns:1fr; } }
+.diag-field { margin-bottom:1.2rem; }
+.diag-field label { display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.5px; text-transform:uppercase; color:var(--navy); margin-bottom:5px; }
+.diag-field input,
+.diag-field select,
+.diag-field textarea {
+    width:100%; padding:11px 14px; border-radius:12px; border:2px solid #e4e8f0;
+    font-family:'Open Sans',sans-serif; font-size:0.95rem; color:var(--text-dark);
+    transition:all 0.3s var(--ease-out); background:var(--bg-light);
+}
+.diag-field input:focus,
+.diag-field select:focus,
+.diag-field textarea:focus { outline:none; border-color:var(--green); background:#fff; box-shadow:0 0 0 4px rgba(0,165,142,0.1); }
+.diag-field textarea { resize:vertical; min-height:110px; line-height:1.6; }
+.diag-field .optional { font-size:0.68rem; color:var(--text-mid); font-weight:400; text-transform:none; letter-spacing:0; margin-left:4px; }
+.diag-checkbox-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:1.5rem; }
+.diag-checkbox-row input[type="checkbox"] { width:18px; height:18px; margin-top:2px; accent-color:var(--green); flex-shrink:0; cursor:pointer; }
+.diag-checkbox-row label { font-size:0.88rem; color:var(--text-mid); cursor:pointer; line-height:1.5; }
+.diag-checkbox-row label a { color:var(--green); text-decoration:none; }
+.diag-checkbox-row label a:hover { text-decoration:underline; }
+.diag-submit-btn {
+    width:100%; padding:15px; border:none; border-radius:50px; cursor:pointer;
+    font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.9rem; letter-spacing:1px;
+    background:linear-gradient(135deg,var(--green),var(--green-dark));
+    color:#fff; transition:all 0.35s var(--ease-bounce); box-shadow:0 8px 24px rgba(0,165,142,0.3);
+}
+.diag-submit-btn:hover:not(:disabled) { transform:translateY(-3px); box-shadow:0 14px 32px rgba(0,165,142,0.45); }
+.diag-submit-btn:disabled { opacity:0.6; cursor:not-allowed; }
+.diag-msg { display:none; padding:14px 18px; border-radius:14px; margin-bottom:1.2rem; font-size:0.9rem; font-weight:600; }
+.diag-msg.success { display:block; background:#e8f8f5; color:#00695c; border:1px solid rgba(0,165,142,0.3); }
+.diag-msg.error { display:block; background:#fff0f0; color:#c62828; border:1px solid rgba(198,40,40,0.25); }
+.diag-promise { font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.5px; color:var(--text-mid); text-align:center; margin-top:1rem; }
+.diag-promise::before { content:'⏱ '; }
         .vista-pagina { display: block !important; }
     </style>
 </head>
@@ -967,10 +1011,10 @@
         <li><a href="sectores.html" >Sectores</a></li>
         <li><a href="metodo.html" >Método</a></li>
         <li><a href="experiencia.html" >Experiencia</a></li>
-        <li><a href="clientes.html" style="color:#fff;">Clientes</a></li>
+        <li><a href="clientes.html" >Clientes</a></li>
         <li><a href="blog.html" >Blog</a></li>
         <li><a href="cobertura.html" >Cobertura</a></li>
-        <li><a href="diagnostico.html" >Diagnóstico</a></li>
+        <li><a href="diagnostico.html" style="color:#fff;">Diagnóstico</a></li>
       </ul>
     </nav>
     <div class="header-actions">
@@ -993,52 +1037,162 @@
     </div>
   </div>
 </header>
-<section id="clientes" class="section clients-section">
+<section id="contacto" class="section" style="background:var(--bg-light);position:relative;">
+
+
     <div class="section-inner">
-        <span class="label" style="color: var(--green)">Quiénes confían en nosotros</span>
-        <h2 class="section-title">Clientes que han <span>confiado en nosotros</span></h2>
-        <p class="section-sub">Hemos colaborado con instituciones educativas, empresas industriales, desarrolladores inmobiliarios, organismos públicos y firmas de ingeniería en proyectos de construcción, mantenimiento e infraestructura.</p>
+        <span class="label">Hablemos de su proyecto</span>
+        <h2 class="section-title">Solicitar diagnóstico <span>de proyecto</span></h2>
+        <p class="section-sub">Comparta los datos básicos de su inmueble y necesidad. Nos pondremos en contacto en un día hábil.</p>
 
-        <div class="client-categories">
-            <!-- EDUCACIÓN -->
-            <div class="client-cat">
-                <div class="client-cat-title">🎓 Educación</div>
-                <div class="client-logos">
-                    <img src="colegio.png" alt="Colegio Salesiano" class="client-logo">
-                    <img src="domingo.png" alt="Domingo Savio" class="client-logo">
+        <div class="diag-layout">
+            <!-- Panel lateral informativo -->
+            <div class="diag-aside reveal">
+                <h3>Contacto directo</h3>
+                <div class="diag-contact-item">
+                    <div class="icon">📞</div>
+                    <div class="text">
+                        <strong>Teléfono de oficina</strong>
+                        <span><a href="tel:+527713769150" style="color:rgba(255,255,255,0.75);text-decoration:none;">771 376 9150 ext. 1021</a></span>
+                    </div>
                 </div>
+                <div class="diag-contact-item">
+                    <div class="icon">💬</div>
+                    <div class="text">
+                        <strong>WhatsApp ventas</strong>
+                        <span><a href="https://wa.me/527229090211" target="_blank" style="color:rgba(255,255,255,0.75);text-decoration:none;">722 909 0211</a></span>
+                    </div>
+                </div>
+                <div class="diag-contact-item">
+                    <div class="icon">✉️</div>
+                    <div class="text">
+                        <strong>Correo</strong>
+                        <span><a href="mailto:contacto@trejomx.com" style="color:rgba(255,255,255,0.75);text-decoration:none;">contacto@trejomx.com</a></span>
+                    </div>
+                </div>
+                <div class="diag-contact-item">
+                    <div class="icon">📍</div>
+                    <div class="text">
+                        <strong>Sede</strong>
+                        <span>Plaza Los Cedros, Blvd. Nuevo Hidalgo 1123, El Venado, C.P. 42185, Pachuca de Soto, Hidalgo</span>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);">
+                    <div style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;letter-spacing:1.5px;color:var(--green);text-transform:uppercase;margin-bottom:0.8rem;">Cobertura</div>
+                    <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.7;">Pachuca · Mineral de la Reforma · Municipios de Hidalgo</p>
+                    <p style="font-size:0.88rem;color:rgba(255,255,255,0.45);line-height:1.7;margin-top:0.4rem;">Proyectos seleccionados: CDMX y Estado de México</p>
+                </div>
+
+                <a href="https://wa.me/527229090211?text=Hola,%20vengo%20de%20trejomx.com%20y%20quisiera%20solicitar%20un%20diagnóstico%20de%20proyecto."
+                   target="_blank"
+                   style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:2rem;background:#25d366;color:#fff;text-decoration:none;padding:13px 20px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;letter-spacing:0.5px;transition:all 0.3s var(--ease-bounce);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.93L2 22l5.29-1.39a9.9 9.9 0 004.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.79 14.02c-.24.68-1.4 1.3-1.93 1.34-.5.05-.99.24-3.32-.7-2.82-1.14-4.62-4.02-4.76-4.21-.14-.19-1.14-1.52-1.14-2.9 0-1.37.72-2.04.97-2.32.25-.28.55-.35.73-.35.19 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.34 1.44.29.15.46.13.63-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 2 .95.29.14.48.21.55.33.07.13.07.72-.16 1.42z"/></svg>
+                    Contactar por WhatsApp
+                </a>
             </div>
 
-            <!-- INDUSTRIA E INGENIERÍA -->
-            <div class="client-cat">
-                <div class="client-cat-title">🏭 Industria e Ingeniería</div>
-                <div class="client-logos">
-                    <img src="ineps.png" alt="INEPS" class="client-logo">
-                    <img src="aerobal.png" alt="Aerobal" class="client-logo">
-                    <img src="caico.png" alt="Columbus McKinnon" class="client-logo">
+            <!-- Formulario -->
+            <div class="diag-form-card reveal reveal-d1">
+                <div id="diag-msg" class="diag-msg"></div>
+                <div id="diag-success-view" style="display:none;text-align:center;padding:2rem 0;">
+                    <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+                    <h3 style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--navy);margin-bottom:0.8rem;">Diagnóstico recibido</h3>
+                    <p style="color:var(--text-mid);line-height:1.7;">Nos pondremos en contacto en un día hábil para coordinar la visita o revisar su caso.</p>
+                    <p style="margin-top:1rem;color:var(--text-mid);font-size:0.9rem;">También puede escribirnos directamente a <a href="mailto:contacto@trejomx.com" style="color:var(--green);">contacto@trejomx.com</a>.</p>
                 </div>
-            </div>
 
-            <!-- COMERCIO Y DESARROLLO -->
-            <div class="client-cat">
-                <div class="client-cat-title">🛒 Comercio y Desarrollo</div>
-                <div class="client-logos">
-                    <img src="chedraui.png" alt="Chedraui" class="client-logo">
-                    <img src="ara.png" alt="ARA" class="client-logo">
-                </div>
-            </div>
+                <form id="diag-form" novalidate>
+                    <div class="form-row">
+                        <div class="diag-field">
+                            <label for="diag-nombre">Nombre completo <span style="color:#c62828;">*</span></label>
+                            <input type="text" id="diag-nombre" name="nombre" required placeholder="Lic. Martínez / Arq. López">
+                        </div>
+                        <div class="diag-field">
+                            <label for="diag-empresa">Empresa u organización <span class="optional">(opcional)</span></label>
+                            <input type="text" id="diag-empresa" name="empresa" placeholder="Nombre de la empresa">
+                        </div>
+                    </div>
 
-            <!-- SECTOR PÚBLICO -->
-            <div class="client-cat">
-                <div class="client-cat-title">🏛️ Sector Público</div>
-                <div class="client-logos">
-                    <img src="Logo_CDMX.png" alt="Gobierno CDMX" class="client-logo">
-                    <img src="lerma.png" alt="Municipio Lerma" class="client-logo">
-                </div>
+                    <div class="form-row">
+                        <div class="diag-field">
+                            <label for="diag-tel">Teléfono <span style="color:#c62828;">*</span></label>
+                            <input type="tel" id="diag-tel" name="telefono" required placeholder="55 1234 5678">
+                        </div>
+                        <div class="diag-field">
+                            <label for="diag-email">Correo electrónico <span style="color:#c62828;">*</span></label>
+                            <input type="email" id="diag-email" name="correo" required placeholder="correo@empresa.com">
+                        </div>
+                    </div>
+
+                    <div class="diag-field">
+                        <label for="diag-municipio">Municipio y estado <span style="color:#c62828;">*</span></label>
+                        <input type="text" id="diag-municipio" name="municipio" required placeholder="Ej: Pachuca, Hidalgo">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="diag-field">
+                            <label for="diag-inmueble">Tipo de inmueble <span style="color:#c62828;">*</span></label>
+                            <select id="diag-inmueble" name="tipoInmueble" required>
+                                <option value="">Seleccionar…</option>
+                                <option value="escuela">Escuela / instalación educativa</option>
+                                <option value="oficina-comercio">Oficina o comercio</option>
+                                <option value="industrial">Industrial / logístico</option>
+                                <option value="condominio">Condominio / vivienda</option>
+                                <option value="edificio-publico">Edificio público / institucional</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="diag-field">
+                            <label for="diag-servicio">Servicio requerido <span style="color:#c62828;">*</span></label>
+                            <select id="diag-servicio" name="servicio" required>
+                                <option value="">Seleccionar…</option>
+                                <option value="construccion">Construcción</option>
+                                <option value="rehabilitacion">Rehabilitación / remodelación</option>
+                                <option value="mantenimiento">Mantenimiento</option>
+                                <option value="impermeabilizacion">Impermeabilización</option>
+                                <option value="pavimentos">Pavimentos / obra exterior</option>
+                                <option value="estructura-metalica">Estructura metálica</option>
+                                <option value="instalaciones">Instalaciones (hidráulica / sanitaria / eléctrica)</option>
+                                <option value="no-se-aun">No sé aún</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="diag-field">
+                        <label for="diag-descripcion">Descripción breve del problema o necesidad <span style="color:#c62828;">*</span></label>
+                        <textarea id="diag-descripcion" name="descripcion" required placeholder="Describa brevemente qué necesita: p.ej. 'Tenemos filtraciones en la azotea de nuestra escuela y queremos rehabilitar dos aulas'"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="diag-field">
+                            <label for="diag-urgencia">Fecha objetivo o urgencia <span style="color:#c62828;">*</span></label>
+                            <select id="diag-urgencia" name="urgencia" required>
+                                <option value="">Seleccionar…</option>
+                                <option value="urgente">Urgente — menos de 1 semana</option>
+                                <option value="proximo-mes">Próximo mes</option>
+                                <option value="3-meses">En 3 meses</option>
+                                <option value="planeando">Estoy planeando</option>
+                            </select>
+                        </div>
+                        <div class="diag-field">
+                            <label for="diag-presupuesto">Presupuesto aproximado <span class="optional">(opcional)</span></label>
+                            <input type="text" id="diag-presupuesto" name="presupuesto" placeholder="Ej: $200,000 MXN">
+                        </div>
+                    </div>
+
+                    <div class="diag-checkbox-row">
+                        <input type="checkbox" id="diag-privacidad" name="privacidad" required>
+                        <label for="diag-privacidad">Acepto el <a href="/aviso-de-privacidad" target="_blank">aviso de privacidad</a> y el tratamiento de mis datos para recibir respuesta a esta solicitud.</label>
+                    </div>
+
+                    <button type="submit" class="diag-submit-btn" id="diag-submit-btn">
+                        Enviar solicitud de diagnóstico
+                    </button>
+                    <p class="diag-promise">Nos pondremos en contacto en un día hábil.</p>
+                </form>
             </div>
         </div>
-
-        <p class="clients-caption">Relaciones construidas a través de la ejecución, el cumplimiento y la confianza.</p>
     </div>
 </section>
 <footer>
@@ -1142,6 +1296,583 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import {
+        getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    import {
+        getFirestore, collection, addDoc, doc, updateDoc, deleteDoc,
+        getDocs, query, orderBy, serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+    import {
+        getStorage, ref, uploadBytes, getDownloadURL, deleteObject
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js";
 
+    // ─── Configuración de tu proyecto Firebase ───
+    const firebaseConfig = {
+        apiKey: "AIzaSyCcQQqxOTlwFC556DDMMVkj1-0YBpwDp6I",
+        authDomain: "pagina-web-3f12f.firebaseapp.com",
+        projectId: "pagina-web-3f12f",
+        storageBucket: "pagina-web-3f12f.firebasestorage.app",
+        messagingSenderId: "733139134833",
+        appId: "1:733139134833:web:bc42cc6df2998b2f782ed0",
+        measurementId: "G-C29E1CVKF2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    // ─── Referencias del DOM ───
+    const loginModal = document.getElementById('login-modal');
+    const editorModal = document.getElementById('editor-modal');
+    const loginForm = document.getElementById('login-form');
+    const loginMsg = document.getElementById('login-msg');
+    const loginSubmitBtn = document.getElementById('login-submit-btn');
+    const editorForm = document.getElementById('editor-form');
+    const editorMsg = document.getElementById('editor-msg');
+    const editorSubmitBtn = document.getElementById('editor-submit-btn');
+    const editorModalTitle = document.getElementById('editor-modal-title');
+    const editorBar = document.getElementById('editor-bar');
+    const editorBarUser = document.getElementById('editor-bar-user');
+    const btnNewPost = document.getElementById('btn-new-post');
+    const btnLogout = document.getElementById('btn-logout');
+    const postIdInput = document.getElementById('post-id');
+    const postTitleInput = document.getElementById('post-title');
+    const postCategoryInput = document.getElementById('post-category');
+    const postExcerptInput = document.getElementById('post-excerpt');
+    const postContentInput = document.getElementById('post-content');
+    const postImageInput = document.getElementById('post-image');
+    const postImageCurrent = document.getElementById('post-image-current');
+    const blocksListEl = document.getElementById('post-blocks-list');
+    const btnAddBlock = document.getElementById('btn-add-block');
+    const blogGridRegular = document.querySelector('.blog-grid-regular');
+    const dynamicFeaturedSlot = document.getElementById('dynamic-featured-slot');
+    const staticFeatured = document.getElementById('blog-grid-featured');
+    const staticDemoCards = document.getElementById('static-demo-cards');
+
+    function openModal(modal) { modal.classList.add('open'); }
+    function closeModal(modal) { modal.classList.remove('open'); }
+
+    document.querySelectorAll('[data-close]').forEach(btn => {
+        btn.addEventListener('click', () => closeModal(document.getElementById(btn.dataset.close)));
+    });
+    [loginModal, editorModal].forEach(modal => {
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
+    });
+
+    function estaEnBlog() {
+        // Cubre tanto la vista #blog como cualquier artículo abierto
+        return document.body.classList.contains('is-blog');
+    }
+
+    // ═══════════════ ESTADO DEL CONSTRUCTOR DE BLOQUES ═══════════════
+    let blocksState = [];       // [{ uid, file, existingUrl, text }]
+    let currentCoverUrl = null; // portada actual al editar
+    let removedBlockUrls = [];  // urls de bloques quitados durante la edición, a limpiar de Storage al guardar
+
+    function genUid() { return 'b' + Date.now() + Math.random().toString(16).slice(2); }
+
+    function syncBlocksFromDOM() {
+        blocksListEl.querySelectorAll('.block-row').forEach(row => {
+            const uid = row.dataset.uid;
+            const b = blocksState.find(x => x.uid === uid);
+            if (!b) return;
+            const textarea = row.querySelector('textarea');
+            const fileInput = row.querySelector('input[type="file"]');
+            if (textarea) b.text = textarea.value;
+            if (fileInput && fileInput.files[0]) b.file = fileInput.files[0];
+        });
+    }
+
+    function renderBlocks() {
+        blocksListEl.innerHTML = '';
+        blocksState.forEach((b, i) => {
+            const row = document.createElement('div');
+            row.className = 'block-row';
+            row.dataset.uid = b.uid;
+            row.innerHTML = `
+                <div class="block-row-head">
+                    <span>Imagen ${i + 1} del cuerpo</span>
+                    <button type="button" class="block-remove-btn" title="Quitar">✕</button>
+                </div>
+                ${b.existingUrl ? `<img src="${b.existingUrl}" class="block-preview-img" alt="">` : ''}
+                <input type="file" accept="image/*">
+                <textarea placeholder="Texto opcional debajo de esta imagen...">${b.text || ''}</textarea>
+            `;
+            row.querySelector('.block-remove-btn').addEventListener('click', () => {
+                syncBlocksFromDOM();
+                if (b.existingUrl) removedBlockUrls.push(b.existingUrl);
+                blocksState = blocksState.filter(x => x.uid !== b.uid);
+                renderBlocks();
+            });
+            blocksListEl.appendChild(row);
+        });
+    }
+
+    btnAddBlock.addEventListener('click', () => {
+        syncBlocksFromDOM();
+        blocksState.push({ uid: genUid(), file: null, existingUrl: null, text: '' });
+        renderBlocks();
+    });
+
+    function prepareNewPostForm() {
+        editorForm.reset();
+        postIdInput.value = '';
+        editorModalTitle.textContent = 'Nueva publicación';
+        editorMsg.className = 'admin-msg';
+        postImageCurrent.innerHTML = '';
+        currentCoverUrl = null;
+        blocksState = [];
+        removedBlockUrls = [];
+        renderBlocks();
+    }
+
+    // ─── Atajo Ctrl+Shift+A: abre login (o directo el editor si ya hay sesión) ───
+    document.addEventListener('keydown', (e) => {
+        const tecla = (e.key || '').toLowerCase();
+        if (e.ctrlKey && e.shiftKey && tecla === 'a') {
+            if (!estaEnBlog()) return;
+            e.preventDefault();
+            if (auth.currentUser) {
+                prepareNewPostForm();
+                openModal(editorModal);
+            } else {
+                loginForm.reset();
+                loginMsg.className = 'admin-msg';
+                openModal(loginModal);
+            }
+        }
+    });
+
+    // ─── Login ───
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loginSubmitBtn.disabled = true;
+        loginMsg.className = 'admin-msg';
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            closeModal(loginModal);
+        } catch (err) {
+            loginMsg.textContent = 'No se pudo iniciar sesión. Verifica tu correo y contraseña.';
+            loginMsg.className = 'admin-msg error';
+        } finally {
+            loginSubmitBtn.disabled = false;
+        }
+    });
+
+    btnLogout.addEventListener('click', () => signOut(auth));
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            document.body.classList.add('is-admin');
+            editorBar.classList.add('visible');
+            editorBarUser.textContent = user.email;
+        } else {
+            document.body.classList.remove('is-admin');
+            editorBar.classList.remove('visible');
+            editorPanel.classList.remove('visible');
+        }
+    });
+
+    btnNewPost.addEventListener('click', () => {
+        prepareNewPostForm();
+        openModal(editorModal);
+    });
+
+    function slugify(texto) {
+        return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '')
+            .replace(/\s+/g, '-').replace(/-+/g, '-').slice(0, 60) || 'publicacion';
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+    }
+
+    function formatDate(ts) {
+        try {
+            const d = (ts && typeof ts.toDate === 'function') ? ts.toDate() : new Date();
+            return d.toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' });
+        } catch (_) { return ''; }
+    }
+
+    // ─── Guardar / actualizar publicación (Firestore + Storage) ───
+    editorForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!auth.currentUser) return;
+        syncBlocksFromDOM();
+        editorSubmitBtn.disabled = true;
+        editorSubmitBtn.textContent = 'Guardando...';
+        editorMsg.className = 'admin-msg';
+
+        try {
+            const title = postTitleInput.value.trim();
+            const category = postCategoryInput.value;
+            const excerpt = postExcerptInput.value.trim();
+            const content = postContentInput.value.trim();
+            const coverFile = postImageInput.files[0];
+            const existingId = postIdInput.value;
+
+            // Portada
+            let imageURL = currentCoverUrl || null;
+            if (coverFile) {
+                const path = `posts/covers/${Date.now()}_${coverFile.name}`;
+                const storageRef = ref(storage, path);
+                await uploadBytes(storageRef, coverFile);
+                imageURL = await getDownloadURL(storageRef);
+            }
+            if (!imageURL) {
+                imageURL = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80';
+            }
+
+            // Bloques del cuerpo (imágenes adicionales + texto opcional)
+            const finalBlocks = [];
+            for (const b of blocksState) {
+                if (b.file) {
+                    const path = `posts/blocks/${Date.now()}_${b.file.name}`;
+                    const blockRef = ref(storage, path);
+                    await uploadBytes(blockRef, b.file);
+                    const url = await getDownloadURL(blockRef);
+                    finalBlocks.push({ imageURL: url, text: b.text || '' });
+                } else if (b.existingUrl) {
+                    finalBlocks.push({ imageURL: b.existingUrl, text: b.text || '' });
+                }
+            }
+
+            const data = {
+                title, category, excerpt, content,
+                imageURL,
+                blocks: finalBlocks,
+                slug: slugify(title),
+                updatedAt: serverTimestamp()
+            };
+
+            if (existingId) {
+                await updateDoc(doc(db, 'posts', existingId), data);
+            } else {
+                data.createdAt = serverTimestamp();
+                await addDoc(collection(db, 'posts'), data);
+            }
+
+            // Limpieza best-effort de imágenes de bloques que el usuario quitó
+            for (const url of removedBlockUrls) {
+                if (url && url.includes('firebasestorage')) {
+                    try { await deleteObject(ref(storage, url)); } catch (_) { /* ya no existe */ }
+                }
+            }
+            removedBlockUrls = [];
+
+            editorMsg.textContent = 'Publicación guardada correctamente.';
+            editorMsg.className = 'admin-msg success';
+            await loadPosts();
+            setTimeout(() => closeModal(editorModal), 900);
+        } catch (err) {
+            console.error(err);
+            editorMsg.textContent = 'Ocurrió un error al guardar. Intenta de nuevo.';
+            editorMsg.className = 'admin-msg error';
+        } finally {
+            editorSubmitBtn.disabled = false;
+            editorSubmitBtn.textContent = 'Publicar';
+        }
+    });
+
+    function prepareEditForm(post, id) {
+        editorForm.reset();
+        postIdInput.value = id;
+        postTitleInput.value = post.title || '';
+        postCategoryInput.value = post.category || 'Noticias';
+        postExcerptInput.value = post.excerpt || '';
+        postContentInput.value = post.content || '';
+        editorModalTitle.textContent = 'Editar publicación';
+        editorMsg.className = 'admin-msg';
+
+        currentCoverUrl = post.imageURL || null;
+        postImageCurrent.innerHTML = currentCoverUrl
+            ? `Portada actual:<br><img src="${currentCoverUrl}" style="width:130px;border-radius:8px;margin-top:6px;">`
+            : '';
+
+        removedBlockUrls = [];
+        blocksState = (post.blocks || []).map(b => ({
+            uid: genUid(), file: null, existingUrl: b.imageURL || null, text: b.text || ''
+        }));
+        renderBlocks();
+        openModal(editorModal);
+    }
+
+    // ─── Contenedor para las secciones de artículo generadas dinámicamente ───
+    let dynamicSectionsContainer = document.getElementById('dynamic-articles-container');
+    if (!dynamicSectionsContainer) {
+        dynamicSectionsContainer = document.createElement('div');
+        dynamicSectionsContainer.id = 'dynamic-articles-container';
+        const footer = document.querySelector('footer');
+        footer.insertAdjacentElement('beforebegin', dynamicSectionsContainer);
+    }
+
+    function setStaticDemoVisible(visible) {
+        if (staticFeatured) staticFeatured.style.display = visible ? '' : 'none';
+        if (staticDemoCards) staticDemoCards.style.display = visible ? 'contents' : 'none';
+    }
+
+    function articleIdFor(post, id) {
+        return `articulo-din-${post.slug}-${id.slice(0, 6)}`;
+    }
+
+    function metaDateHtml(post) {
+        return `<div class="blog-meta">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v11H5V9z"/></svg>
+            ${formatDate(post.createdAt)}
+        </div>`;
+    }
+
+    function buildArticleSection(post, id) {
+        const section = document.createElement('section');
+        section.id = articleIdFor(post, id);
+        section.className = 'section vista-pagina';
+        const blocksHtml = (post.blocks || []).map(b => `
+            <figure style="margin:0;">
+                <img src="${b.imageURL}" class="article-block-img" alt="${escapeHtml(post.title)}">
+                ${b.text ? `<p class="article-block-text">${b.text}</p>` : ''}
+            </figure>`).join('');
+        section.innerHTML = `
+            <div class="article-header-img" style="background-image:url('${post.imageURL}');"></div>
+            <div class="article-content" style="max-width:800px;margin:0 auto;padding:40px 5%;">
+                <div class="blog-tag" style="margin-bottom:14px;display:inline-block;">${escapeHtml(post.category || 'Noticias')}</div>
+                <h1>${escapeHtml(post.title)}</h1>
+                <div style="margin-top:14px;">${metaDateHtml(post)}</div>
+                <p class="article-intro">${post.content || ''}</p>
+                <div class="article-blocks">${blocksHtml}</div>
+                <div style="margin-top:40px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+                    <a href="blog.html" class="read-more-btn">← Volver al blog</a>
+                    <button type="button" class="admin-btn admin-edit-btn" style="width:auto;padding:10px 22px;margin-top:0;" data-edit-id="${id}">Editar publicación</button>
+                </div>
+            </div>`;
+        dynamicSectionsContainer.appendChild(section);
+        section.querySelector('[data-edit-id]').addEventListener('click', () => prepareEditForm(post, id));
+    }
+
+    function buildBigFeaturedCard(post, id) {
+        const a = document.createElement('a');
+        a.href = `#${articleIdFor(post, id)}`;
+        a.className = 'blog-card';
+        a.dataset.dynamic = '1';
+        a.innerHTML = `
+            <button type="button" class="admin-delete-btn dynamic-post" data-delete-id="${id}" title="Eliminar publicación">🗑</button>
+            <div class="blog-img-wrapper">
+                <span class="blog-new-badge">Nuevo</span>
+                <div class="blog-tag">${escapeHtml(post.category || 'Noticias')}</div>
+                <div class="blog-img large" style="background-image:url('${post.imageURL}');"></div>
+            </div>
+            <div class="blog-content">
+                ${metaDateHtml(post)}
+                <h3 class="blog-title large">${escapeHtml(post.title)}</h3>
+                <p class="blog-excerpt">${escapeHtml(post.excerpt || '')}</p>
+                <div class="read-more-btn">Leer artículo <span>➔</span></div>
+            </div>`;
+        attachDelete(a, post, id);
+        return a;
+    }
+
+    function buildSmallFeaturedCard(post, id) {
+        const a = document.createElement('a');
+        a.href = `#${articleIdFor(post, id)}`;
+        a.className = 'blog-card';
+        a.dataset.dynamic = '1';
+        a.innerHTML = `
+            <button type="button" class="admin-delete-btn dynamic-post" data-delete-id="${id}" title="Eliminar publicación">🗑</button>
+            <div class="blog-img-wrapper">
+                <div class="blog-tag">${escapeHtml(post.category || 'Noticias')}</div>
+                <div class="blog-img" style="height:200px;background-image:url('${post.imageURL}');"></div>
+            </div>
+            <div class="blog-content" style="padding:25px;">
+                ${metaDateHtml(post)}
+                <h3 class="blog-title" style="font-size:1.2rem;">${escapeHtml(post.title)}</h3>
+                <div class="read-more-btn">Leer artículo <span>➔</span></div>
+            </div>`;
+        attachDelete(a, post, id);
+        return a;
+    }
+
+    function buildRegularCard(post, id) {
+        const a = document.createElement('a');
+        a.href = `#${articleIdFor(post, id)}`;
+        a.className = 'blog-card';
+        a.dataset.dynamic = '1';
+        a.innerHTML = `
+            <button type="button" class="admin-delete-btn dynamic-post" data-delete-id="${id}" title="Eliminar publicación">🗑</button>
+            <div class="blog-img-wrapper">
+                <div class="blog-tag">${escapeHtml(post.category || 'Noticias')}</div>
+                <div class="blog-img" style="background-image:url('${post.imageURL}');"></div>
+            </div>
+            <div class="blog-content">
+                ${metaDateHtml(post)}
+                <h3 class="blog-title">${escapeHtml(post.title)}</h3>
+                <p class="blog-excerpt">${escapeHtml(post.excerpt || '')}</p>
+                <div class="read-more-btn">Leer artículo <span>➔</span></div>
+            </div>`;
+        attachDelete(a, post, id);
+        return a;
+    }
+
+    function attachDelete(cardEl, post, id) {
+        const btn = cardEl.querySelector('[data-delete-id]');
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!auth.currentUser) return;
+            if (!confirm('¿Eliminar esta publicación de forma permanente?')) return;
+            try {
+                await deleteDoc(doc(db, 'posts', id));
+                const urlsToDelete = [post.imageURL, ...((post.blocks || []).map(b => b.imageURL))];
+                for (const url of urlsToDelete) {
+                    if (url && url.includes('firebasestorage')) {
+                        try { await deleteObject(ref(storage, url)); } catch (_) { /* ya no existe */ }
+                    }
+                }
+                await loadPosts();
+            } catch (err) {
+                console.error(err);
+                alert('No se pudo eliminar la publicación.');
+            }
+        });
+    }
+
+    // ─── Leer publicaciones de Firestore y renderizar: destacada + grid cronológico ───
+    async function loadPosts() {
+        if (!blogGridRegular) return;
+        let snap;
+        try {
+            const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
+            snap = await getDocs(q);
+        } catch (err) {
+            console.error('No se pudieron cargar las publicaciones de Firestore:', err);
+            return;
+        }
+
+        document.querySelectorAll('.blog-card[data-dynamic="1"]').forEach(el => el.remove());
+        dynamicSectionsContainer.innerHTML = '';
+        dynamicFeaturedSlot.innerHTML = '';
+        dynamicFeaturedSlot.classList.remove('single');
+
+        const posts = [];
+        snap.forEach(docSnap => posts.push({ id: docSnap.id, data: docSnap.data() }));
+
+        setStaticDemoVisible(posts.length === 0);
+        dynamicFeaturedSlot.style.display = posts.length > 0 ? '' : 'none';
+
+        let sideColumn = null;
+        posts.forEach((p, idx) => {
+            const post = p.data, id = p.id;
+            buildArticleSection(post, id);
+
+            if (idx === 0) {
+                dynamicFeaturedSlot.appendChild(buildBigFeaturedCard(post, id));
+            } else if (idx === 1 || idx === 2) {
+                if (!sideColumn) {
+                    sideColumn = document.createElement('div');
+                    sideColumn.style.cssText = 'display:flex;flex-direction:column;gap:35px;';
+                    dynamicFeaturedSlot.appendChild(sideColumn);
+                }
+                sideColumn.appendChild(buildSmallFeaturedCard(post, id));
+            } else {
+                blogGridRegular.appendChild(buildRegularCard(post, id));
+            }
+        });
+
+        if (!sideColumn) dynamicFeaturedSlot.classList.add('single');
+
+        // --- MAGIA: Revisamos la URL DESPUÉS de que Firebase cargó los artículos ---
+        const hashActual = window.location.hash;
+        if (hashActual && hashActual.length > 1) {
+            // Abrimos el artículo específico
+            window.cambiarVista(hashActual.replace('#', ''));
+        } else {
+            // Si entran a la raíz de tu dominio, abre el inicio
+            window.cambiarVista('inicio'); 
+        }
+        // ---------------------------------------------------------------------------
+
+        if (window.checkReveal) setTimeout(window.checkReveal, 80);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadPosts);
+
+    // ─── FORMULARIO DIAGNÓSTICO — guarda en Firestore colección "leads" ───
+    (function() {
+        const form    = document.getElementById('diag-form');
+        const msgEl   = document.getElementById('diag-msg');
+        const submitBtn = document.getElementById('diag-submit-btn');
+        const successView = document.getElementById('diag-success-view');
+
+        if (!form) return;
+
+        // Pre-seleccionar servicio si se navega con parámetro en hash
+        // Ejemplo: #contacto?servicio=mantenimiento
+        function preSelectService() {
+            const hash = window.location.hash || '';
+            const match = hash.match(/servicio=([^&]+)/);
+            if (match) {
+                const sel = document.getElementById('diag-servicio');
+                if (sel) sel.value = decodeURIComponent(match[1]);
+            }
+        }
+        window.addEventListener('hashchange', preSelectService);
+        preSelectService();
+
+        function showMsg(text, type) {
+            msgEl.textContent = text;
+            msgEl.className = 'diag-msg ' + type;
+        }
+        function hideMsg() { msgEl.className = 'diag-msg'; }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMsg();
+
+            // Validación manual del checkbox de privacidad
+            const privacidad = document.getElementById('diag-privacidad');
+            if (!privacidad.checked) {
+                showMsg('Debe aceptar el aviso de privacidad para continuar.', 'error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando…';
+
+            const payload = {
+                nombre:       document.getElementById('diag-nombre').value.trim(),
+                empresa:      document.getElementById('diag-empresa').value.trim(),
+                telefono:     document.getElementById('diag-tel').value.trim(),
+                correo:       document.getElementById('diag-email').value.trim(),
+                municipio:    document.getElementById('diag-municipio').value.trim(),
+                tipoInmueble: document.getElementById('diag-inmueble').value,
+                servicio:     document.getElementById('diag-servicio').value,
+                descripcion:  document.getElementById('diag-descripcion').value.trim(),
+                urgencia:     document.getElementById('diag-urgencia').value,
+                presupuesto:  document.getElementById('diag-presupuesto').value.trim(),
+                origen:       'formulario-web',
+                creadoEn:     new Date().toISOString(),
+                leido:        false
+            };
+
+            try {
+                await addDoc(collection(db, 'leads'), payload);
+                form.style.display = 'none';
+                successView.style.display = 'block';
+            } catch (err) {
+                console.error('Error al guardar lead:', err);
+                showMsg('Ocurrió un error al enviar. Por favor contáctenos directamente a contacto@trejomx.com o al 771 376 9150.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar solicitud de diagnóstico';
+            }
+        });
+    })();
+</script>
 </body>
 </html>
